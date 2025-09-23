@@ -1,0 +1,119 @@
+\documentclass{article}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\usepackage{microtype}
+\usepackage{enumitem}
+
+% macro for bra kets
+\usepackage{mathtools}
+\DeclarePairedDelimiter\bra{\langle}{\rvert}
+\DeclarePairedDelimiter\ket{\lvert}{\rangle}
+\DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1\,\delimsize\vert\,\mathopen{}#2}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\eps}{\varepsilon}
+\renewcommand{\Im}{\mathrm{Im}}
+\renewcommand{\Re}{\mathrm{Re}}
+
+\DeclareMathOperator{\Tr}{Tr}
+
+\newcommand{\bb}{\mathbb}
+
+\theoremstyle{remark}
+\newtheorem{questionpart}{}
+\renewcommand*{\thequestionpart}{\textbf{(\alph{questionpart})}}
+\newcommand{\SL}{\mathrm{SL}}
+\DeclareMathOperator{\diag}{\mathrm{diag}}
+
+\title{Lie Groups - Assignment 1}
+\author{Quinten Vergeylen}
+\date{}
+
+
+\begin{document}
+\maketitle
+\setstretch{1.1}
+
+\section*{Week 1: Exercise 2}
+\begin{enumerate}[label=(\roman*)]
+    \item Let $X,Y \in M(n,\bb{R})$.
+    
+    \underline{Symmetric:} $\langle X, Y \rangle = \Tr(XY^t) = \Tr((YX^t)^t) = \Tr(YX^t) = \langle Y,X \rangle$, using the property that the trace of a matrix is equal to the trace of its transpose.
+
+    \underline{Linear in the first argument:} Let $A,B \in M(n,\bb{R})$ and $a,b \in \bb{R}$. Then
+    \begin{align*}
+        \langle aA+bB, Y \rangle = \Tr((aA + bB)Y^t) &= \Tr(aAY^t + bBY^t) \\
+        &= a \Tr(AY^t) + b\Tr(BY^t) &\text{(linearity of trace)} \\
+        &= a\langle A, Y \rangle + b \langle B, Y \rangle.
+    \end{align*}
+
+    \underline{Positive definite:} Notice that $\Tr(XX^t) = \sum_{1\leq i,j \leq n} x_{ij}^2$, where $x_{ij} \in \bb{R}$ is the component in the $i$-th row and $j$-th column of $X$. It follows immediately that $\langle X, X \rangle \geq 0$ and that $X = 0$ if and only if $\langle X, X\rangle = 0$.
+
+    \item Let $X \in O(n)$. Then $\lVert X \rVert = \langle X,X \rangle^{1/2} = \Tr(XX^t)^{1/2} = \Tr(I_n)^{1/2} = \sqrt{n}$, where $I_n \in M(n,\bb{R})$ is the identity matrix.
+    
+    \item By (ii), $O(n)$ is bounded in $M(n,\bb{R})$ for this inner product. Let $X = \overline{O(n)}$, where the overline denotes the closure, and let $(X_k)_k$ be a sequence in $O(n)$ which converges to $X$. Then
+    \begin{align*}
+        I_n = \lim_{k\to\infty} I_n = \lim_{k\to\infty} X_k X_k^T = (\lim_{k\to\infty} X_k)(\lim_{k\to\infty} X_k)^t = XX^t,
+    \end{align*}
+    where the third equality follows from the continuity of the matrix product and the matrix transpose. Therefore, $X \in O(n)$, and we can conclude that $O(n)$ is closed. Since it is closed and bounded, $O(n)$ is compact.
+\end{enumerate}
+
+\section*{Week 2: Exercise 3}
+\begin{enumerate}[label=(\roman*)]
+    \item Let $x \in \SL(n,\bb{R})$. Since $x^tx$ is symmetric, there exists an orthogonal matrix $P$ such that $x^tx = P\diag(\lambda_1, \ldots, \lambda_n)P^t$, where $\lambda_1, \ldots, \lambda_n$ are the eigenvalues of $x^tx$. For every $i \in \{1, \ldots, n\}$, let $v_i \in \bb{R}^n$ be an eigenvector of $x$ with eigenvalue $\lambda_i$. Then, using the standard inner product on $\bb{R}^n$,
+    \begin{align*}
+        \lambda_i |v_i|^2 = \langle v_i, \lambda_i v_i \rangle = \langle v_i, x^tx v_i \rangle = \langle xv_i, \lambda_i xv_i \rangle = |xv_i|^2,
+    \end{align*}
+    which implies that $\lambda_i>0$ for all $i$.
+
+    Now let $X_s = P \diag(\ln(\sqrt{\lambda_1}), \ldots, \ln(\sqrt{\lambda_n})) P^t$. Then
+    \begin{align*}
+        \Tr(X_s) &= \Tr \left[ P^tP \diag(\ln(\sqrt{\lambda_1}), \ldots, \ln(\sqrt{\lambda_n})) \right] &\text{(cyclic property of trace)} \\
+        &= \Tr \left[ \diag(\ln(\sqrt{\lambda_1}), \ldots, \ln(\sqrt{\lambda_n})) \right] &\text{($P^tP = I_n$)} \\
+        &= \sum_{i=1}^{n} \ln(\sqrt{\lambda_i}) = \ln(\sqrt{\lambda_1 \cdots \lambda_n}) = \ln (\sqrt{\det(x^tx)}) = \ln(1) = 0.
+    \end{align*}
+    Therefore, $X_s \in \mathfrak{sl}(n,\bb{R})$. Moreover,
+    \begin{align*}
+        \exp(X_s)^2 &= \left[  \sum_{k=0}^{\infty} \frac{1}{k!} P \diag(\ln(\sqrt{\lambda_1}), \ldots, \ln(\sqrt{\lambda_n})) P^t \right]^2 \\
+        &= \left[ P \left(\sum_{k=0}^{\infty} \frac{1}{k!}  \diag(\ln(\sqrt{\lambda_1}), \ldots, \ln(\sqrt{\lambda_n})) \right) P^t \right]^2 \\
+        &= \left[ P \diag(\sqrt{\lambda_1}, \ldots, \sqrt{\lambda_n}) P^t\right]^2 \\
+        &= P \diag(\lambda_1, \ldots, \lambda_n) P^t \\
+        &= x^tx.
+    \end{align*}
+
+    \item We have 
+    \begin{align*}
+        \left(x \exp(-X_s)\right)^t \left(x \exp(-X_s)\right) &= \left(\exp(-X_s)\right)^t x^t x \exp(-X_s) \\
+        &= \left(\exp(-X_s)\right)^t \left(\exp(X_s)\right)^2 \exp(-X_s).
+    \end{align*}
+    Note first that $\left(\exp(-X_s)\right)^t = \exp(-X_s^t) = \exp(-X_s)$ since $X_s$ is symmetric, and secondly that $\exp(X_s)\exp(-X_s) = I_n$. It follows that $\left(x \exp(-X_s)\right)^t \left(x \exp(-X_s)\right) = I_n$, so $x \exp(-X_s)$ is orthogonal.
+
+    \item Let $x \in \SL(n,\bb{R})$ and $X_s \in \mathfrak{sl}(n,\bb{R})$ the corresponding matrix as above. Then
+    \begin{align*}
+        \det\left(x \exp(-X_s)\right) = \det(x) \det\left(\exp(-X_s)\right) = e^{\Tr(-X_s)} = 1,
+    \end{align*}
+    since $\det(x)=1$ and $\Tr(X_s) = 0$. Therefore, $x \exp(-X_s) \in \mathrm{SO}(n,\bb{R})$. In other words, there exists an $O \in \mathrm{SO}(n,\bb{R})$ so that $x = \exp(X_s)O$. On the other hand, define $A$ to be the set of symmetric matrices in $\mathfrak{sl}(n,\bb{R})$. For any $Y_s \in A$ and $P \in \mathrm{SO}(n,\bb{R})$,
+    \begin{align*}
+        \det\left(\exp(Y_s) P\right) = e^{\Tr(Y_s)} \det(P) = 1,
+    \end{align*}
+    so $\exp(Y_s) P \in \SL(n,\bb{R})$. It follows from these considerations that the map
+    \begin{align*}
+        f : A \times \mathrm{SO}(n,\bb{R}) \to \SL(n,\bb(R)) : (Y_s, P) \mapsto \exp(Y_s)P
+    \end{align*}
+    is well-defined and surjective. Since $\exp$ and the matrix multiplication are both smooth, $f$ is smooth. In particular, $f$ is continuous. We now show that $A$ is connected, which, together with the fact that $\mathrm{SO}(n,\bb{R})$ is connected, implies that $A \times \mathrm{SO}(n,\bb{R})$ and therefore $f(A \times \mathrm{SO}(n,\bb{R})) = \SL(n,\bb{R})$ is connected.
+    
+    \textcolor{red}{Continue (iii)!!}
+
+
+\end{enumerate}
+
+\end{document}

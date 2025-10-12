@@ -75,16 +75,17 @@
 \section*{Week 2: Exercise 3}
 \begin{enumerate}[label=(\roman*)]
     \item Let $x \in \SL(n,\bb{R})$. Since $x^tx$ is symmetric, there exists an orthogonal matrix $P$ such that $x^tx = P\diag(\lambda_1, \ldots, \lambda_n)P^t$, where $\lambda_1, \ldots, \lambda_n$ are the eigenvalues of $x^tx$. For every $i \in \{1, \ldots, n\}$, let $v_i \in \bb{R}^n$ be an eigenvector of $x$ with eigenvalue $\lambda_i$. Then, using the standard inner product on $\bb{R}^n$,
-    \begin{align*}
-        \lambda_i |v_i|^2 = \langle v_i, \lambda_i v_i \rangle = \langle v_i, x^tx v_i \rangle = \langle xv_i, \lambda_i xv_i \rangle = |xv_i|^2,
-    \end{align*}
+    \begin{equation*}
+        \lambda_i |v_i|^2 = \langle v_i, \lambda_i v_i \rangle = \langle v_i, x^tx v_i \rangle = \langle xv_i, xv_i \rangle = |xv_i|^2,
+    \end{equation*}
     which implies that $\lambda_i>0$ for all $i$.
 
     Now let $X_s = P \diag(\ln(\sqrt{\lambda_1}), \ldots, \ln(\sqrt{\lambda_n})) P^t$. Then
     \begin{align*}
-        \Tr(X_s) &= \Tr \left[ P^tP \diag(\ln(\sqrt{\lambda_1}), \ldots, \ln(\sqrt{\lambda_n})) \right] &\text{(cyclic property of trace)} \\
-        &= \Tr \left[ \diag(\ln(\sqrt{\lambda_1}), \ldots, \ln(\sqrt{\lambda_n})) \right] &\text{($P^tP = I_n$)} \\
-        &= \sum_{i=1}^{n} \ln(\sqrt{\lambda_i}) = \ln(\sqrt{\lambda_1 \cdots \lambda_n}) = \ln (\sqrt{\det(x^tx)}) = \ln(1) = 0.
+        \Tr(X_s) &= \Tr \left[ P^tP \diag(\ln(\sqrt{\lambda_1}), \ldots, \ln(\sqrt{\lambda_n})) \right] &&\text{(cyclic property of trace)} \\
+        &= \Tr \left[ \diag(\ln(\sqrt{\lambda_1}), \ldots, \ln(\sqrt{\lambda_n})) \right] &&\text{($P^tP = I_n$)} \\
+        &= \sum_{i=1}^{n} \ln(\sqrt{\lambda_i}) \\
+        &= \ln(\sqrt{\lambda_1 \cdots \lambda_n}) = \ln (\sqrt{\det(x^tx)}) = \ln(1) = 0.
     \end{align*}
     Therefore, $X_s \in \mathfrak{sl}(n,\bb{R})$. Moreover,
     \begin{align*}
@@ -129,19 +130,19 @@
     \begin{align*}
         \frac{d}{d t} \bigg|_{t=0} \ell_{g^{-1}} \circ \Phi^t_X(g) = \d_{\Phi^0_X(g)}\ell_{g^{-1}}\left(v_X\left(\Phi^0_X(g)\right)\right) = \d_g \ell_{g^{-1}} (v_X(g)) = \d_g \ell_{g^{-1}}(\d_e \ell_g (X)) = X,
     \end{align*}
-    where we used the fact that $v_X$ is left-invariant in the third equality. By uniqueness of integral curves, and since the integral curve of a left-invariant vector field is determined by its value at $t=0$, $\ell_{g^{-1}} \circ \Phi^t_X(g)$ is the integral curve for $v_X$. Therefore, by Proposition 2.9(i), $\ell_{g^{-1}} \circ \Phi^t_X(g) = \exp(tX)$, so $\Phi^t_X(g) = g\exp(tX)$.
+    where we used the fact that $v_X$ is left-invariant in the third equality. By uniqueness of integral curves, and since the integral curve of a left-invariant vector field is determined by its value at $t=0$, $\ell_{g^{-1}} \circ \Phi^t_X(g)$ is the integral curve for $v_X$. Therefore, by Proposition 2.9(i) in the lecture notes, $\ell_{g^{-1}} \circ \Phi^t_X(g) = \exp(tX)$, so $\Phi^t_X(g) = g\exp(tX)$.
 
     \item Let $g,h \in G$. By (i), $\Phi^t_X = r_{\exp(tX)}$, so $(\d_{gh} \Phi^t_X)^{-1} = (\d_{gh} r_{\exp(tX)})^{-1} = \d_{gh\exp(tX)} r_{\exp(-tX)}$. Hence,
-    \begin{align*}
-        (\Phi^t_X)^*v_Y(gh) &= (\d_{gh} \Phi^t_X)^{-1} v_Y(\Phi^t_X(gh)) \\
-        &= \d_{gh \exp(tX)} r_{\exp(-tX)} (v_Y(gh \exp(tX))) \\
-        &= (\d_{gh \exp(tX)} r_{\exp(-tX)} \circ \d_{h \exp(tX)} \ell_g) (v_Y(h\exp(tX))),
-    \end{align*}
+    \begin{align}
+        (\Phi^t_X)^*v_Y(gh) &= (\d_{gh} \Phi^t_X)^{-1} v_Y(\Phi^t_X(gh)) \nonumber \\
+        &= \d_{gh \exp(tX)} r_{\exp(-tX)} (v_Y(gh \exp(tX))) \nonumber \\
+        &= (\d_{gh \exp(tX)} r_{\exp(-tX)} \circ \d_{h \exp(tX)} \ell_g) (v_Y(h\exp(tX))), \label{eq1}
+    \end{align}
     using the left invariance of $v_Y$ in the last equality. Since $r_{\exp(-tX)} \circ \ell_g = \ell_g \circ r_{\exp(-tX)}$, we have $\d_{h \exp(tX)} (r_{\exp(-tX)} \circ \ell_g) = \d_{h \exp(tX)} (\ell_g \circ r_{\exp(-tX)})$, so by the chain rule,
-    \begin{align*}
+    \begin{equation*}
         \d_{gh\exp(tX)} r_{\exp(-tX)} \circ \d_{h \exp(tX)} \ell_g = \d_h \ell_g \circ \d_{h\exp(tX)} r_{\exp(-tX)}.
-    \end{align*}
-    Applying this, we get
+    \end{equation*}
+    Applying this to \eqref{eq1}, we get
     \begin{align*}
          (\Phi^t_X)^*v_Y(gh) = \d_h \ell_g \left(\d_{h \exp(tX)} r_{\exp(-tX)} \left(v_Y(h\exp(tX))\right)\right) = \d_h \ell_g \left( (\Phi^t_X)^* v_Y(h) \right),
     \end{align*}

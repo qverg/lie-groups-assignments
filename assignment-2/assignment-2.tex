@@ -60,16 +60,90 @@
     
     First we show that $A$ is a subgroup of $G$. Let $g, h \in A$ and suppose $g^n \in K$ and $h^m \in K$. Then $(gh)^{nm} = g^{nm}h^{nm} = (g^n)^m (h^m)^n \in K$, where we used that $G$ is abelian and that $K$ is a subgroup of $G$. It follows that $gh \in K$. Furthermore, $(g^{-1})^n = (g^n)^{-1} \in K$, so $g^{-1} \in A$. Therefore, $A$ is a subgroup of $G$.
 
-    Next, we show that $A$ is compact. Let $G_1, \ldots, G_k$ be the connected components of $G$ with the property for each $j \in \{1, \ldots, k\}$ that there exists a $h_j \in G_j$ and an $n_j \in \bb{Z}_{>0}$ such that $h_j^{n_j} \in K$. In other words, $G_1, \ldots, G_k$ are the connected components of $G$ with nonempty intersection with $A$. We know that there are finitely many such $G_j$ since $G$ has finitely many connected components by assumption.
+    Next, we show that $A$ is compact. Let $G_1 = G_e, G_2,  \ldots, G_k$ be the connected components of $G$ with the property for each $j \in \{1, \ldots, k\}$ that there exists a $h_j \in G_j$ and an $n_j \in \bb{Z}_{>0}$ such that $h_j^{n_j} \in K$. In other words, $G_1, \ldots, G_k$ are the connected components of $G$ with nonempty intersection with $A$. We know that there are finitely many such $G_j$ since $G$ has finitely many connected components by assumption.
     
-    Fix $j \in \{1, \ldots, j\}$ for now and note that the left translation $\ell_{h_j} : G_e \to G_j$ is a diffeomorphism. Indeed, $\ell_{h_j}(e) = h_j \in G_j$ and $\ell_{h_j}(G_e)$ is both open and closed since $G_e$ is both of these and $\ell_{h_j} : G \to G$ is a diffeomorphism. It follows that $\ell_{h_j}(G_e)$ must be the connected component of $G$ containing $h_j$, which is precisely $G_j$. Now pick any $x \in G_j \cap A$, supposing $x^m \in K$. We now have $\ell_{h_j}^{-1}(x) = h_j^{-1}x \in G_e \cong \bb{T}^p \times \bb{R}^q$ and $(h_j^{-1}x)^{mn_j} \in K \cong \bb{T}^p \times \{0\}^p$. Let $\pi : G_e \cong \bb{T}^p \times \bb{R}^q \to \bb{R}^q$ be the projection. The fact that $\pi((h_j^{-1}x)^{mn_j}) = 0 \in \bb{R}^q$ implies that $\pi(h_j^{-1}x) = 0$, since the only real number that becomes zero when added to itself $mn_j$ times is zero. Therefore, $h_j^{-1}x \in K$, and hence $xK = h_jK$. In particular, $x \in h_j K$.
+    Fix $j \in \{1, \ldots, j\}$ for now and note that the left translation $\ell_{h_j} : G_e \to G_j$ is a diffeomorphism. Indeed, $\ell_{h_j}(e) = h_j \in G_j$ and $\ell_{h_j}(G_e)$ is both open and closed since $G_e$ is both of these and $\ell_{h_j} : G \to G$ is a diffeomorphism. It follows that $\ell_{h_j}(G_e)$ must be the connected component of $G$ containing $h_j$, which is precisely $G_j$. Now pick any $x \in G_j \cap A$, supposing $x^m \in K$. We now have $\ell_{h_j}^{-1}(x) = h_j^{-1}x \in G_e \cong \bb{T}^p \times \bb{R}^q$ and $(h_j^{-1}x)^{mn_j} \in K \cong \bb{T}^p \times \{0\}^p$. Let $\phi : G_e \to \bb{T}^p \times \bb{R}^q$ be a Lie group isomorphism and $\pi : \bb{T}^p \times \bb{R}^q \to \bb{R}^q$ the projection. The fact that $(\pi \circ \phi)((h_j^{-1}x)^{mn_j}) = 0 \in \bb{R}^q$ implies that $(\pi \circ \phi)(h_j^{-1}x) = 0$, since the only real number that becomes zero when added to itself $mn_j$ times is zero. Therefore, $h_j^{-1}x \in K$, and hence $xK = h_jK$. In particular, $x \in h_j K$.
 
     It now follows that $A = h_1K \cup \cdots \cup h_kK$. Indeed, we have just shown that any element $x$ of $A$ is contained in $h_jK$ if $G_j$ is the connected component of $G$ containing $x$. Conversely, $(h_jg)^{n_j} = h_j^{n_j}g^{n_j} \in K$ for every $g \in K$, so $h_jK \subset A$ for every $j$. Since $A$ is a finite union of compact sets $h_jK$, we have shown that $A$ is compact.
+
+    Suppose $B$ is a subgroup of $G$ and $A \subsetneq B$. Fix $x \in B\setminus A$ and $j \in \{1, \ldots, k\}$ for which $x \in G_j$. Because $x \not\in A$, we have $x \not\in h_jK$, and therefore $h_j^{-1}x \not\in K$. Then $v := (\pi \circ \phi)(h_j^{-1}x) \in \bb{R}^q \setminus \{0\}$. Consequently, $\left((\pi \circ \phi)((h_j^{-1}x)^{mn_j})\right)_{m\in \bb{Z}} = (mn_jv)_{m \in \bb{Z}}$ (using the fact that $\pi \circ \phi$ is a group homomorphism) is a sequence in $\bb{R}$ of distinct elements. In particular, $((h_j^{-1}x)^{mn_j})_{m \in \bb{Z}}$ is a sequence of distinct elements of $B$. (This is because $h_j \in A \subset B$ and $x \in B$ and $B$ is a group.) Now write
+    \begin{equation*}
+        L_m = \left\{av \,\middle|\, \left(m-\frac{3}{4}\right)n_j < a < \left(m+\frac{3}{4}\right)n_j\right\} \subset \mathrm{span}\{v\} \subset \bb{R}^q
+    \end{equation*}
+    for every $m \in \bb{Z}$. Then $\{L_m \times (\mathrm{span}\{v\})^\perp\}_{m \in \bb{Z}}$ is an open cover of $\bb{R}^q$. Let
+    \begin{equation*}
+        U_m = (\pi \circ \phi)^{-1}\left(L_m \times (\mathrm{span}\{v\})^\perp\right) \cup G_2 \cup \cdots \cup G_k
+    \end{equation*}
+    for every $m \in \bb{Z}$, so $\{U_m\}_{m\in \bb{Z}}$ is an open cover of $G$ and in particular of $B$, by the continuity of $\pi \circ \phi$. Moreover, by the injectivity of $\pi \circ \phi$, every $U_{\overline{m}}$ contains precisely one element of the sequence $((h_j^{-1}x)^{mn_j})_{m \in \bb{Z}}$, namely $(h_j^{-1}x)^{\overline{m}n_j}$, and it is the only open set in the cover that contains this element. Therefore, the open cover $\{U_m\}$ does not admit a finite subcover over $B$, since any such subcover would omit elements of that sequence. Hence, $B$ is not compact.
+
+    \textcolor{red}{Uniqueness???}
+    %In particular, $((h_j^{-1}x)^{mn_j})_{m \in \bb{N}}$ is a sequence of distinct elements of $B$. (This is because $h_j \in A \subset B$ and $x \in B$ and $B$ is a group.) 
+    %Now define $U_m = G \setminus \{(h_j^{-1}x)^{mn_j}\}$ for every $m \in \bb{N}$. Then $\{U_m\}_m$ is an open cover of $B$. It is clear, however, that it admits no finite subcover of $B$, since such a subcover would necessarily omit elements of the sequence $((h_j^{-1}x)^{mn_j})_{m \in \bb{N}}$. Therefore, $B$ is not compact. We have shown that $A$ is a maximal compact subgroup of $G$.
+    % Then $\{U_m\}_m$ is an open cover of $G$, and in particular of $B$. Suppose that there is a finite subcover $U_{m_1}, \ldots, U_{m_r}$ of $B$. Let $\overline{m} \in \bb{N} \setminus \{m_1, \ldots, m_r\}$. Then
+    % \begin{equation*}
+    %     (\pi \circ \phi)\left((h_j^{-1}x)^{\overline{m}n_j}\right) \not\in \bigcup_{l=1}^r (\pi \circ \phi)
+    % \end{equation*}
 \end{enumerate}
 
 
 \section*{Week 5: Exercise 3} %==============================
+\begin{enumerate}[label=(\roman*)]
+    \item \underline{Associativity:} Let $(n,h), (n',h'), (n'',h'') \in N \times H$. Then
+    \begin{equation*}
+        (n,h)\left((n',h')(n'',h'')\right) = (n,h)(n'\alpha_{h'}(n''), h'h'') = (n\alpha_h(n'\alpha_{h'}(n'')), h(h'h'')).
+    \end{equation*}
+    Since $H$ is a group, $h(h'h'') = (hh')h''$. Furthermore,
+    \begin{equation*}
+        n\alpha_h(n'\alpha_{h'}(n'')) = n\alpha_h(n')\alpha_h(\alpha_{h'}(n'')) = n\alpha_h(n')\alpha_{hh'}(n''),
+    \end{equation*}
+    using in the first equality that $\alpha_h$ is a group homomorphism and in the second that $\alpha$ is a group action. It follows that
+    \begin{align*}
+        (n,h)\left((n',h')(n'',h'')\right) = (n\alpha_h(n')\alpha_{hh'}(n''), (hh')h'') &= (n\alpha_h(n'), hh')(n'',h'') \\
+        &= \left((n,h)(n',h')\right)(n'',h''),
+    \end{align*}
+    so the product is associative.
 
+    \underline{Identity:} Let $(n,h) \in N \times H$. Let $e_N$ denote the identity in $N$ and $e_H$ the identity in $H$. Note that
+    \begin{equation*}
+        (e_N, e_H)(n,h) = (e_N \alpha_{e_H}(n), e_Hh) = (n,h)
+    \end{equation*}
+    and
+    \begin{equation*}
+        (n,h)(e_N, e_H) = (n\alpha_h(e_N), he_H) = (ne_N, h) = (n,h).
+    \end{equation*}
+    In the second to last equality, we used that $\alpha_h$ is a group homomorphism. It follows that $(e_N, e_H)$ is an identity element in $N\times H$ for this product.
+
+    \underline{Inverse:} Let $(n,h) \in N\times H$. Then
+    \begin{align*}
+        (n,h)(\alpha_{h^{-1}}(n^{-1}), h^{-1}) = (n\alpha_h(\alpha_{h^{-1}}(n^{-1})), hh^{-1}) = (n\alpha_{e_H}(n^{-1}), e_H) &= (nn^{-1}, e_H) \\
+        &= (e_N, e_H),
+    \end{align*}
+    where in the second and third equalities we used that $\alpha$ is a group action, and
+    \begin{align*}
+        (\alpha_{h^{-1}}(n^{-1}), h^{-1})(n,h) = (\alpha_{h^{-1}}(n^{-1})\alpha_{h^{-1}}(n), h^{-1}h) = (\alpha_{h^{-1}}(n^{-1}n), e_H) = (e_N, e_H),
+    \end{align*}
+    where in the first and last equalities we used that $\alpha_{h^{-1}}$ is a group homomorphism. Therefore, $(\alpha_{h^{-1}}(n^{-1}), h^{-1})$ is the inverse of $(n,h)$ in $N\times H$ for this product.
+
+    \item Let $(n,e_H) \in N\times \{e_H\}$. Let $(n',h') \in G$. Then
+    \begin{align*}
+        (n',h')(n,e_H)(n',h')^{-1} &= (n',h')(n,e_H)(\alpha_{h'^{-1}}(n'^{-1}), h'^{-1}) \\
+        &= (n'\alpha_{h'}(n), h')(\alpha_{h'^{-1}}(n'^{-1}), h'^{-1}) \\
+        &= (n'\alpha_{h'}(n)\alpha_{h'}(\alpha_{h'^{-1}}(n'^{-1})), e_H) \in N \times \{e_H\}.
+    \end{align*}
+    Since $(n,e_H)$ and $(n',h')$ were arbitrary, it follows that $N \cong N\times\{e_H\}$ is a normal subgroup of $G$.
+
+    \item Since cartesian products of manifolds are manifolds, $G$ is a manifold. In this smooth structure, the projections $\pi_N : G = N \times H \to N$ and $\pi_H : G = N \times H \to H$ are smooth. Let $\mu_N$ and $\mu_H$ be the multiplications on $N$ and $H$ respectively, which are both smooth since $N$ and $H$ are Lie groups. The multiplication $\mu : G \times G \to G$ on $G$ is given by
+    \begin{equation*}
+        \mu(g_1, g_2) = (\mu_N(\pi_N(g_1), \alpha(\pi_H(g_1), \pi_N(g_2))), \mu_H(\pi_H(g_1), \pi_H(g_2))).
+    \end{equation*}
+    This is a composition of smooth maps, so $\mu$ is smooth. Furthermore, let $\iota_N$ and $\iota_H$ be the inverses on $N$ and $H$ respectively, both smooth since $N$ and $H$ are Lie groups. Then the inverse $\iota : G \to G$ on $G$ is given by
+    \begin{equation*}
+        \iota(g) = (\alpha((\iota_H \circ \pi_H)(g), (\iota_N \circ \pi_N)(g)), (\iota_H\circ \pi_H)(g)),
+    \end{equation*}
+    which is also a composition of smooth maps and hence itself smooth. Since $G$ is a manifold and the group operations on $G$ are smooth, $G$ is a Lie group.
+
+    \item \textcolor{red}{TO DO.}
+\end{enumerate}
 
 
 \section*{Week 6: Exercise 1} %==============================

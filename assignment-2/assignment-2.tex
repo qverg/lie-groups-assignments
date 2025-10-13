@@ -11,6 +11,7 @@
 \usepackage{xurl}
 \usepackage{microtype}
 \usepackage{enumitem}
+\usepackage{bbm}
 
 % macro for bra kets
 \usepackage{mathtools}
@@ -142,7 +143,13 @@
     \end{equation*}
     which is also a composition of smooth maps and hence itself smooth. Since $G$ is a manifold and the group operations on $G$ are smooth, $G$ is a Lie group.
 
-    \item \textcolor{red}{TO DO.}
+    \item We first check that $\alpha_g$ is a group automorphism for every $g \in \mathrm{SO}(n)$. Let $g \in \mathrm{SO}(n)$ and $x,y \in \bb{R}^n$. Then $\alpha_g(x+y) = g(x+y) = gx+gy = \alpha_g(x) + \alpha_g(y)$, so $\alpha_g$ is a group homomorphism. Suppose that $\alpha_g(x) = \alpha_g(y)$. Then $gx-gy = 0$, but since $\det g \neq 0$, this implies $x-y = 0$. Therefore, $\alpha_g$ is injective. Moreover, $\alpha_g$ is surjective because $\alpha_g(g^{-1}x) = x$ for all $x \in \bb{R}^n$. Therefore, $\alpha_g$ is an automorphism, so the definition of $E(n)$ as $N \rtimes H$ makes sense.
+    
+    Since $\bb{R}^n$ and $\mathrm{SO}(n)$ are both Lie groups, and $\alpha$ is obviously smooth, $E(n)$ is a Lie group by (iii). Let $\beta : E(n) \times \bb{R}^n \to \bb{R}^n : ((g,x),y) \mapsto gy+x$ be the natural action. We show now that $\beta$ is free and transitive.
+
+    Let $(g,x) \in E(n)$ and suppose $\beta((g,x),y) = y$ for all $y \in \bb{R}^n$. Then $gy+x = y$, which is equivalent to $x = (\mathbbm{1}-g)(y)$. This can only hold for all $y$ if $g = \mathbbm{1}$ and thus $x=0$, so that $(g,x) = (\mathbbm{1},0)$ is the identity element in $E(n)$. Therefore, $\beta$ is free. Furthermore, let $y,z \in \bb{R}^n$. Then $g((\mathbbm{1}, z-y),y) = y+z-y = z$, so $\beta$ is transitive.
+
+    Since $\beta$ is transitive, its orbit through any $(g,x) \in E(n)$ is $E(n)$ is $E(n)$ itself, so the orbit space is trivial.
 \end{enumerate}
 
 

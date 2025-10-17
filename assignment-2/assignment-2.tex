@@ -12,6 +12,7 @@
 \usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{bbm}
+\usepackage{tikz-cd}
 
 % macro for bra kets
 \usepackage{mathtools}
@@ -28,7 +29,11 @@
 \newcommand{\bb}{\mathbb}
 
 \newcommand{\SL}{\mathrm{SL}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Mat}{\mathrm{Mat}}
 \DeclareMathOperator{\diag}{\mathrm{diag}}
+\DeclareMathOperator{\im}{\mathrm{im}}
 \renewcommand{\d}{\mathrm{d}}
 
 \theoremstyle{remark}
@@ -158,5 +163,51 @@
 
 
 \section*{Week 6: Exercise 1} %==============================
+
+\begin{enumerate}[label=(\roman*)]
+    \item Write $\mathbbm{1} \in \mathrm{GL}(n, \bb{K})$ to denote the identity matrix.
+    
+    Let $A \in \Hom_i (\bb{K}^k, \bb{K}^n)$. Then $\alpha(\mathbbm{1}, A) = \mathbbm{1} \circ A = A$. Let $g_1, g_2 \in G$. Then
+    \begin{equation*}
+        \alpha(g_1, \alpha(g_2, A)) = \alpha(g_1, g_2 \circ A) = g_1 \circ (g_2 \circ A) = (g_1 \circ g_2) \circ A = \alpha(g_1g_2, A)
+    \end{equation*}
+    since $g_1g_2$ is the same as $g_1 \circ g_2$. These properties imply that $\alpha$ is a group action.
+
+    Let $V \in G_{n,k}(\bb{K})$. Then $\beta(\mathbbm{1}, V) = \mathbbm{1}(V) = V$. Let $g_1, g_2 \in G$. Then
+    \begin{equation*}
+        \beta(g_1, \beta(g_2, V)) = \beta(g_1, g_2(V)) = g_1(g_2(V)) = (g_1 \circ g_2)(V) = \beta(g_1g_2, V).
+    \end{equation*}
+    These properties imply that $\beta$ is a group action.
+
+    \item Let $A \in \Hom_i (\bb{K}^k, \bb{K}^n)$ and $g \in G$. Let $x \in p(\alpha(g,A)) = \im(g \circ A)$. Then $x = g(A(y))$ for some $y \in \bb{K}^k$, so $x \in g(\im A) = g(p(A)) = \beta(g, p(A))$. Therefore, $p(\alpha(g,A)) \subset \beta(g, p(A))$. Conversely, let $x \in \beta(g, p(A)) = g(p(A))$. Then $g^{-1}(x) \in p(A) = \im A$, so $g^{-1}(x) = A(y)$ for some $y \in \bb{K}^k$. It follows that $x = (g \circ A)(y)$, so $x \in \im(g \circ A) = p(\alpha(g,A))$. Therefore, $\beta(g, p(A)) \subset p(\alpha(g,A))$. Hence, these sets are equal.
+    
+    \item The Lie group $G$ inherits its smooth structure from $\bb{K}^{n^2} \cong \Mat_{n,n}(\bb{K})$, so identify $G$ as a subspace of $\Mat_{n,n}(\bb{K})$. Similarly, $\Hom(\bb{K}^k, \bb{K}^n) \cong \Mat_{n,k}(\bb{K})$ as a vector space (and thus as a manifold), so we can identify $\Hom_i(\bb{K}^k, \bb{K}^n)$ as an open subset of $\Mat_{n,k}(\bb{K})$. As an open subset of a manifold, $\Hom_i(\bb{K}^k, \bb{K}^n)$ is a manifold itself, with its smooth structure inherited from $\Mat_{n,k}(\bb{K})$. Within these identifications, $\alpha$ simply corresponds to matrix multiplication, which is smooth since it is smooth in the matrix components.
+    
+    \item By (ii), the diagram
+    \begin{equation*}
+        \begin{tikzcd}
+            G \times \Hom_i(\bb{K}^k, \bb{K}^n) \arrow[r, "p \circ \alpha"] \arrow[rd, "\mathrm{id} \times p" below] & G_{n,k}(\bb{K}) \\
+            & G \times G_{n,k}(\bb{K}) \arrow[u, "\beta"]
+        \end{tikzcd}
+    \end{equation*}
+    commutes. Since $\mathrm{id} : G \times G$ and $p$ are both smooth submersions, $\mathrm{id} \times p$ is a smooth submersion. By (iii), $\alpha$ is smooth, and therefore $p \circ \alpha$ is smooth. Now, according to Lemma 6.13 in the lecture notes, $\beta$ is smooth.
+
+    \item Let $V, W \in G_{n,k}(\bb{K})$ and let $(v_1, \ldots v_k)$ and $(w_1, \ldots, w_k)$ be bases for $V$ and $W$, respectively. Let $g \in \GL(n,\bb{K}) = G$ be the map taking $v_j$ to $w_j$ for every $j \in \{1, \ldots, k\}$. Then $\beta(g,V) = g(V) = W$. The spaces $V$ and $W$ were arbitrary, so $\beta$ is a transitive group action.
+    
+    Now let $V = \bb{K}^k \times \{0\}^{n-k} \in G_{n,k}(\bb{K})$. Let $G_V \subset G$ be the stabiliser subgroup of $V$ with respect to $\beta$. Let $g \in G_V$ and $v \in V$. Since $gv \in V$, it follows that $g$, seen as an invertible matrix, must have the form
+    \begin{equation*}
+        \begin{pmatrix}
+            A & B \\ 0 & C
+        \end{pmatrix},
+    \end{equation*}
+    where $A \in \Mat_{k,k}(\bb{K})$, $B \in \Mat_{k,n-k}(\bb{K})$ and $C \in \Mat_{n-k,n-k}(\bb{K})$. But $0 \neq \det (g) = \det(A)\det(C)$, so $A \in \GL(k, \bb{K})$ and $C \in \GL(n-k, \bb{K})$. Therefore, $g \in P$, and it follows that $G_V \subset P$. Conversely, it is clear that $P \subset G_V$, since any matrix in $P$ maps the last $n-k$ components of any vector to zero. Hence, $P = G_V$. By Theorem 6.16, $G/G_V = G/P$ is diffeomorphic to $G_{n,k}(\bb{K})$.
+
+    \item Let $gP \in G/P$. Then $g = (g_1 g_2 \cdots g_n) \in \GL(n, \bb{K})$, where $g_1, \ldots, g_n$ are the columns of $g$. Applying Gram-Schmidt orthonormalisation, define
+    \begin{align*}
+        u_1 = g_1, \qquad u_2 = g_2 - \frac{\langle g_2, u_1 \rangle}{\langle u_1, u_1 \rangle} u_1,& \qquad u_3 = g_3 - \frac{\langle g_3, u_1 \rangle}{\langle u_1, u_1 \rangle} u_1 - \frac{\langle g_3, u_2 \rangle}{\langle u_2, u_2 \rangle} u_2, \\
+        & \ldots, \qquad u_n = g_n - \sum_{j=1}^{n-1} \frac{\langle g_n, u_j \rangle}{\langle u_j, u_j \rangle} u_j
+    \end{align*}
+    and $e_j = u_j / \lVert u_j \rVert$ for every $j \in \{1, \ldots, n\}$, where $\langle \cdot, \cdot \rangle$ is the standard inner product on $\bb{K}^n$ and $\lVert \, \cdot \, \rVert$ the standard norm.
+\end{enumerate}
 
 \end{document}

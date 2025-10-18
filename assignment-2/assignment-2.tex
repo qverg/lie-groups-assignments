@@ -181,7 +181,7 @@
 
     \item Let $A \in \Hom_i (\bb{K}^k, \bb{K}^n)$ and $g \in G$. Let $x \in p(\alpha(g,A)) = \im(g \circ A)$. Then $x = g(A(y))$ for some $y \in \bb{K}^k$, so $x \in g(\im A) = g(p(A)) = \beta(g, p(A))$. Therefore, $p(\alpha(g,A)) \subset \beta(g, p(A))$. Conversely, let $x \in \beta(g, p(A)) = g(p(A))$. Then $g^{-1}(x) \in p(A) = \im A$, so $g^{-1}(x) = A(y)$ for some $y \in \bb{K}^k$. It follows that $x = (g \circ A)(y)$, so $x \in \im(g \circ A) = p(\alpha(g,A))$. Therefore, $\beta(g, p(A)) \subset p(\alpha(g,A))$. Hence, these sets are equal.
     
-    \item The Lie group $G$ inherits its smooth structure from $\bb{K}^{n^2} \cong \Mat_{n,n}(\bb{K})$, so identify $G$ as a subspace of $\Mat_{n,n}(\bb{K})$. Similarly, $\Hom(\bb{K}^k, \bb{K}^n) \cong \Mat_{n,k}(\bb{K})$ as a vector space (and thus as a manifold), so we can identify $\Hom_i(\bb{K}^k, \bb{K}^n)$ as an open subset of $\Mat_{n,k}(\bb{K})$. As an open subset of a manifold, $\Hom_i(\bb{K}^k, \bb{K}^n)$ is a manifold itself, with its smooth structure inherited from $\Mat_{n,k}(\bb{K})$. Within these identifications, $\alpha$ simply corresponds to matrix multiplication, which is smooth since it is smooth in the matrix components.
+    \item The Lie group $G$ inherits its smooth structure from $\bb{K}^{n^2} \cong \Mat_{n,n}(\bb{K})$, so identify $G$ as a subspace of $\Mat_{n,n}(\bb{K})$. Similarly, $\Hom(\bb{K}^k, \bb{K}^n) \cong \Mat_{n,k}(\bb{K})$ as a vector space (and thus as a manifold), so we can identify $\Hom_i(\bb{K}^k, \bb{K}^n)$ as an open subset of $\Mat_{n,k}(\bb{K})$. As an open subset of a manifold, $\Hom_i(\bb{K}^k, \bb{K}^n)$ is a manifold itself, with its smooth structure inherited from $\Mat_{n,k}(\bb{K})$. With these identifications, $\alpha$ simply corresponds to matrix multiplication, which is smooth since it is smooth in the matrix components.
     
     \item By (ii), the diagram
     \begin{equation*}
@@ -190,7 +190,7 @@
             & G \times G_{n,k}(\bb{K}) \arrow[u, "\beta"]
         \end{tikzcd}
     \end{equation*}
-    commutes. Since $\mathrm{id} : G \times G$ and $p$ are both smooth submersions, $\mathrm{id} \times p$ is a smooth submersion. By (iii), $\alpha$ is smooth, and therefore $p \circ \alpha$ is smooth. Now, according to Lemma 6.13 in the lecture notes, $\beta$ is smooth.
+    commutes. Since $\mathrm{id} : G \to G$ and $p$ are both smooth submersions, $\mathrm{id} \times p$ is a smooth submersion. By (iii), $\alpha$ is smooth, and therefore $p \circ \alpha$ is smooth. According to Lemma 6.13 in the lecture notes, it follows that $\beta$ is smooth.
 
     \item Let $V, W \in G_{n,k}(\bb{K})$ and let $(v_1, \ldots v_k)$ and $(w_1, \ldots, w_k)$ be bases for $V$ and $W$, respectively. Let $g \in \GL(n,\bb{K}) = G$ be the map taking $v_j$ to $w_j$ for every $j \in \{1, \ldots, k\}$. Then $\beta(g,V) = g(V) = W$. The spaces $V$ and $W$ were arbitrary, so $\beta$ is a transitive group action.
     
@@ -202,12 +202,24 @@
     \end{equation*}
     where $A \in \Mat_{k,k}(\bb{K})$, $B \in \Mat_{k,n-k}(\bb{K})$ and $C \in \Mat_{n-k,n-k}(\bb{K})$. But $0 \neq \det (g) = \det(A)\det(C)$, so $A \in \GL(k, \bb{K})$ and $C \in \GL(n-k, \bb{K})$. Therefore, $g \in P$, and it follows that $G_V \subset P$. Conversely, it is clear that $P \subset G_V$, since any matrix in $P$ maps the last $n-k$ components of any vector to zero. Hence, $P = G_V$. By Theorem 6.16, $G/G_V = G/P$ is diffeomorphic to $G_{n,k}(\bb{K})$.
 
-    \item Let $gP \in G/P$. Then $g = (g_1 g_2 \cdots g_n) \in \GL(n, \bb{K})$, where $g_1, \ldots, g_n$ are the columns of $g$. Applying Gram-Schmidt orthonormalisation, define
+    \item Let $gP \in G/P$. Then $g = (g_1 \, g_2 \,\cdots \,g_n) \in \GL(n, \bb{K})$, where $g_1, \ldots, g_n$ are the columns of $g$. Applying Gram-Schmidt orthonormalisation, define
     \begin{align*}
         u_1 = g_1, \qquad u_2 = g_2 - \frac{\langle g_2, u_1 \rangle}{\langle u_1, u_1 \rangle} u_1,& \qquad u_3 = g_3 - \frac{\langle g_3, u_1 \rangle}{\langle u_1, u_1 \rangle} u_1 - \frac{\langle g_3, u_2 \rangle}{\langle u_2, u_2 \rangle} u_2, \\
         & \ldots, \qquad u_n = g_n - \sum_{j=1}^{n-1} \frac{\langle g_n, u_j \rangle}{\langle u_j, u_j \rangle} u_j
     \end{align*}
-    and $e_j = u_j / \lVert u_j \rVert$ for every $j \in \{1, \ldots, n\}$, where $\langle \cdot, \cdot \rangle$ is the standard inner product on $\bb{K}^n$ and $\lVert \, \cdot \, \rVert$ the standard norm.
+    and $e_j = u_j / \lVert u_j \rVert$ for every $j \in \{1, \ldots, n\}$, where $\langle \cdot, \cdot \rangle$ is the standard inner product on $\bb{K}^n$ and $\lVert \, \cdot \, \rVert$ the standard norm. Let $E_{i,j} \in \Mat_{n \times n}(\bb{K})$ denote the matrix which has 1 in the $(i,j)$-th component ($i$-th row, $j$-th column) and 0 everywhere else. Define
+    \begin{align*}
+        P_1 = \mathbbm{1}, \qquad P_2 = \mathbbm{1} - \frac{\langle g_2, u_1 \rangle}{\langle u_1, u_1 \rangle} E_{1,2}, &\qquad P_3 = \mathbbm{1} - \frac{\langle g_3, u_1 \rangle}{\langle u_1, u_1 \rangle} E_{1,3} - \frac{\langle g_3, u_2 \rangle}{\langle u_2, u_2 \rangle} E_{2,3} \\
+        & \ldots, \qquad P_n = \mathbbm{1} - \sum_{j=1}^{n-1} \frac{\langle g_n, u_j \rangle}{\langle u_j, u_j \rangle} E_{j,n}
+    \end{align*}
+    and $P_{n+1} = \diag(\frac{1}{\lVert u_1 \rVert}, \ldots, \frac{1}{\lVert u_n \rVert})$. Then $P_1, \ldots, P_n, P_{n+1} \in P$ and 
+    \begin{equation*}
+        gP_1P_2\cdots P_{n+1} =(e_1 \, e_2 \, \cdots \, e_n),
+    \end{equation*}
+    since the matrices $P_j$ apply the Gram-Schmidt procedure to the columns of $g$.
+    Write $h = (e_1 \, e_2 \, \cdots \, e_n)$. We have found that $hP = gP$. The matrix $h$ is orthogonal if $\bb{K} = \bb{R}$, or unitary if $\bb{K} = \bb{C}$. Since we chose $g$ arbitrarily, the map $\pi|_H : H \to G/P : h' \mapsto h'P$ is therefore surjective. I used $\pi$ to denote the quotient map $G \to G/P$.
+
+    Since $\pi$ is continuous by the construction of the topology on $G/P$, its restriction $\pi|_H$ is also continuous. Therefore, the fact that $H$ is compact implies that $\pi|_H(H) = G/P$ is compact. But $G/P$ is diffeomorphic to $G_{n,k}(\bb{K})$ by (v), so $G_{n,k}(\bb{K})$ is compact.
 \end{enumerate}
 
 \end{document}

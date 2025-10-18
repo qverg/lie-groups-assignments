@@ -50,7 +50,7 @@
 
 \section*{Week 4: Exercise 1} %==============================
 \begin{enumerate}[label=(\roman*)]
-    \item By Theorem 4.8, $G_e \cong \bb{T}^p \times \bb{R}^q$ for certain $p, q \in \bb{N}$. Therefore, any subgroup of $G_e$ is isomorphic to a group of the form $T_1 \times \cdots \times T_p \times R_1 \times \cdots \times R_q$, where $T_j$ is a subgroup of $\bb{T}$ for every $j$ and $R_k$ is a subgroup of $\bb{R}$ for every $k$. We claim that $\bb{T}^p \cong \bb{T}^p \times \{0\}^p \subset G_e$ is the unique maximal compact subgroup of $G_e$, where $\{0\}$ denotes the trivial subgroup of $\bb{R}$.
+    \item By Theorem 4.8, $G_e \cong \bb{T}^p \times \bb{R}^q$ for certain $p, q \in \bb{N}$. Therefore, any subgroup of $G_e$ is isomorphic to a group of the form $T_1 \times \cdots \times T_p \times R_1 \times \cdots \times R_q$, where $T_j$ is a subgroup of $\bb{T}$ for every $j$ and $R_k$ is a subgroup of $\bb{R}$ for every $k$. We claim that $\bb{T}^p \cong \bb{T}^p \times \{0\}^q \subset G_e$ is the unique maximal compact subgroup of $G_e$, where $\{0\}$ denotes the trivial subgroup of $\bb{R}$.
     
     It is clear that $\bb{T}^p$ is a compact subgroup of $G_e$. Suppose that $L$ is a subgroup of $G_e$ which contains $\bb{T}^p$. Then $L$ is isomorphic to
     \begin{equation*}
@@ -58,7 +58,7 @@
     \end{equation*}
     for certain subgroups $R_k$ of $\bb{R}$. If $R_k$ is any other subgroup of $\bb{R}$ other than $\{0\}$ for any $k$, then $L$ is not compact, since $\{0\}$ is the only compact subgroup of $\bb{R}$. It follows that $\bb{T}^p$ is a maximal compact subgroup of $G_e$. Lastly, we can use the reasoning above to assert that any compact subgroup of $G_e$ is isomorphic to 
     \begin{equation*}
-        T_1 \times T_p \times \{0\}^p \cong T_1 \times T_p \subset \bb{T}^p
+        T_1 \times \cdots \times T_p \times \{0\}^p \cong T_1 \times \cdots \times T_p \subset \bb{T}^p
     \end{equation*}
     for certain subgroups $T_j$ of $\bb{T}$. Therefore, $K = \bb{T}^p$ is the unique maximal compact subgroup of $G_e$.
 
@@ -66,32 +66,32 @@
     
     First we show that $A$ is a subgroup of $G$. Let $g, h \in A$ and suppose $g^n \in K$ and $h^m \in K$. Then $(gh)^{nm} = g^{nm}h^{nm} = (g^n)^m (h^m)^n \in K$, where we used that $G$ is abelian and that $K$ is a subgroup of $G$. It follows that $gh \in K$. Furthermore, $(g^{-1})^n = (g^n)^{-1} \in K$, so $g^{-1} \in A$. Therefore, $A$ is a subgroup of $G$.
 
-    Next, we show that $A$ is compact. Let $G_1 = G_e, G_2,  \ldots, G_k$ be the connected components of $G$ with the property for each $j \in \{1, \ldots, k\}$ that there exists a $h_j \in G_j$ and an $n_j \in \bb{Z}_{>0}$ such that $h_j^{n_j} \in K$. In other words, $G_1, \ldots, G_k$ are the connected components of $G$ with nonempty intersection with $A$. We know that there are finitely many such $G_j$ since $G$ has finitely many connected components by assumption.
+    Next, we show that $A$ is compact. Let $G_1, G_2,  \ldots, G_k$ be the connected components of $G$ with the property for each $j \in \{1, \ldots, k\}$ that there exists a $g_j \in G_j$ and an $n_j \in \bb{Z}_{>0}$ such that $g_j^{n_j} \in K$. In other words, $G_1, \ldots, G_k$ are the connected components of $G$ with nonempty intersection with $A$. By (i), we can take $G_1 = G_e$. We know that there are finitely many such $G_j$ since $G$ has finitely many connected components by assumption.
     
-    Fix $j \in \{1, \ldots, j\}$ for now and note that the left translation $\ell_{h_j} : G_e \to G_j$ is a diffeomorphism. Indeed, $\ell_{h_j}(e) = h_j \in G_j$ and $\ell_{h_j}(G_e)$ is both open and closed since $G_e$ is both of these and $\ell_{h_j} : G \to G$ is a diffeomorphism. It follows that $\ell_{h_j}(G_e)$ must be the connected component of $G$ containing $h_j$, which is precisely $G_j$. Now pick any $x \in G_j \cap A$, supposing $x^m \in K$. We now have $\ell_{h_j}^{-1}(x) = h_j^{-1}x \in G_e \cong \bb{T}^p \times \bb{R}^q$ and $(h_j^{-1}x)^{mn_j} \in K \cong \bb{T}^p \times \{0\}^p$. Let $\phi : G_e \to \bb{T}^p \times \bb{R}^q$ be a Lie group isomorphism and $\pi : \bb{T}^p \times \bb{R}^q \to \bb{R}^q$ the projection. The fact that $(\pi \circ \phi)((h_j^{-1}x)^{mn_j}) = mn_j (\pi \circ \phi)(h_j^{-1}x) = 0 \in \bb{R}^q$ (using that $\pi \circ \phi$ is a group homomorphism) implies that $(\pi \circ \phi)(h_j^{-1}x) = 0$. Therefore, $h_j^{-1}x \in K$, and hence $xK = h_jK$. In particular, $x \in h_j K$.
+    Fix $j \in \{1, \ldots, j\}$ for now and note that the left translation $\ell_{g_j} : G_e \to G_j$ is a diffeomorphism. Indeed, $\ell_{g_j}(e) = g_j \in G_j$ and $\ell_{g_j}(G_e)$ is both open and closed since $G_e$ is both open and closed and $\ell_{g_j} : G \to G$ is a diffeomorphism. It follows that $\ell_{g_j}(G_e)$ must be the connected component of $G$ containing $g_j$, which is precisely $G_j$. Now pick any $x \in G_j \cap A$, supposing $x^m \in K$. We now have $\ell_{g_j}^{-1}(x) = g_j^{-1}x \in G_e \cong \bb{T}^p \times \bb{R}^q$ and $(g_j^{-1}x)^{mn_j} \in K \cong \bb{T}^p \times \{0\}^p$. Let $\phi : G_e \to \bb{T}^p \times \bb{R}^q$ be a Lie group isomorphism and $\pi : \bb{T}^p \times \bb{R}^q \to \bb{R}^q$ the projection. The fact that $(\pi \circ \phi)((g_j^{-1}x)^{mn_j}) = mn_j (\pi \circ \phi)(g_j^{-1}x) = 0 \in \bb{R}^q$ (using that $\pi \circ \phi$ is a group homomorphism) implies that $(\pi \circ \phi)(g_j^{-1}x) = 0$. Therefore, $g_j^{-1}x \in K$, and hence $x \in g_j K$.
 
-    It now follows that $A = h_1K \cup \cdots \cup h_kK$. Indeed, we have just shown that any element $x$ of $A$ is contained in $h_jK$ if $G_j$ is the connected component of $G$ containing $x$. Conversely, $(h_jg)^{n_j} = h_j^{n_j}g^{n_j} \in K$ for every $g \in K$, so $h_jK \subset A$ for every $j$. Left translation is a homeomorphism, so $h_jK$ is compact for every $j$. Since $A$ is a finite union of compact sets $h_jK$, we have shown that $A$ is compact.
+    It now follows that $A = h_1K \cup \cdots \cup h_kK$. Indeed, we have just shown that any element $x$ of $A$ is contained in $g_jK$ if $G_j$ is the connected component of $G$ containing $x$. Conversely, $(g_jg)^{n_j} = g_j^{n_j}g^{n_j} \in K$ for every $g \in K$, so $g_jK \subset A$ for every $j$. Left translation is a homeomorphism, so $g_jK$ is compact for every $j$, since $K$ is compact. Since $A$ is a finite union of compact sets $g_jK$, we have shown that $A$ is compact.
 
-    Suppose $B$ is a subgroup of $G$ and $B \not\subset A$. Fix $x \in B\setminus A$ and $j \in \{1, \ldots, k\}$ for which $x \in G_j$. Because $x \not\in A$, we have $x \not\in h_jK$, and therefore $h_j^{-1}x \not\in K$. Then $v := (\pi \circ \phi)(h_j^{-1}x) \in \bb{R}^q \setminus \{0\}$. Consequently, $\left((\pi \circ \phi)((h_j^{-1}x)^{mn_j})\right)_{m\in \bb{Z}} = (mn_jv)_{m \in \bb{Z}}$ is a sequence in $\bb{R}^q$ of distinct nonzero elements. In particular, $((h_j^{-1}x)^{mn_j})_{m \in \bb{Z}}$ is a sequence of distinct elements of $B$. (They are in $B$ because $h_j \in A \subset B$ and $x \in B$ and $B$ is a group.) Now write
+    Suppose $B$ is a subgroup of $G$ and $B \not\subset A$. Fix $x \in B\setminus A$ and $j \in \{1, \ldots, k\}$ for which $x \in G_j$. Because $x \not\in A$, we have $x \not\in g_jK$, and therefore $g_j^{-1}x \not\in K$. Then $v := (\pi \circ \phi)(g_j^{-1}x) \in \bb{R}^q \setminus \{0\}$. Consequently, $\left((\pi \circ \phi)((g_j^{-1}x)^{mn_j})\right)_{m\in \bb{Z}} = (mn_jv)_{m \in \bb{Z}}$ is a sequence in $\bb{R}^q$ of distinct nonzero elements. In particular, $((g_j^{-1}x)^{mn_j})_{m \in \bb{Z}}$ is a sequence of distinct elements of $B$. (They are in $B$ because $g_j \in A \subset B$ and $x \in B$ and $B$ is a group.) Now write
     \begin{equation*}
         L_m = \left\{av \,\middle|\, a \in \bb{R}, \left(m-\frac{3}{4}\right)n_j < a < \left(m+\frac{3}{4}\right)n_j\right\} \subset \mathrm{span}\{v\} \subset \bb{R}^q
     \end{equation*}
-    for every $m \in \bb{Z}$. Then $\{L_m \times (\mathrm{span}\{v\})^\perp\}_{m \in \bb{Z}}$ is an open cover of $\bb{R}^q$. Let
+    for every $m \in \bb{Z}$. Then $\{L_m \times (\mathrm{span}\{v\})^\perp\}_{m \in \bb{Z}}$ is an open cover of $\bb{R}^q$, where the orthogonal is taken with respect to the standard inner product on $\bb{R}^q$. Let
     \begin{equation*}
         U_m = (\pi \circ \phi)^{-1}\left(L_m \times (\mathrm{span}\{v\})^\perp\right) \cup G_2 \cup \cdots \cup G_k
     \end{equation*}
     for every $m \in \bb{Z}$, so $\{U_m\}_{m\in \bb{Z}}$ is an open cover of $G$ and in particular of $B$, by the continuity of $\pi \circ \phi$.
-    %Moreover, by the injectivity of $\pi \circ \phi$, every $U_{\overline{m}}$ contains precisely one element of the sequence $((h_j^{-1}x)^{mn_j})_{m \in \bb{Z}}$, namely $(h_j^{-1}x)^{\overline{m}n_j}$, and it is the only open set in the cover that contains this element.
-    Moreover, for every $m \in \bb{Z}$, the set $U_m$ contains precisely one element of the sequence $((h_j^{-1}x)^{mn_j})_{m \in \bb{Z}}$, namely $(h_j^{-1}x)^{{m}n_j}$, and it is the only open set in the cover that contains this element.
+    %Moreover, by the injectivity of $\pi \circ \phi$, every $U_{\overline{m}}$ contains precisely one element of the sequence $((g_j^{-1}x)^{mn_j})_{m \in \bb{Z}}$, namely $(g_j^{-1}x)^{\overline{m}n_j}$, and it is the only open set in the cover that contains this element.
+    Moreover, for every $m \in \bb{Z}$, the set $U_m$ contains precisely one element of the sequence $((g_j^{-1}x)^{mn_j})_{m \in \bb{Z}}$, namely $(g_j^{-1}x)^{{m}n_j}$, and it is the only open set in the cover that contains this element.
     Therefore, the open cover $\{U_m\}$ does not admit a finite subcover over $B$, since any finite subcover would omit elements of that sequence. Hence, $B$ is not compact.
     
-    It follows in particular that any subgroup of $G$ containing $A$ is not compact, so $A$ is a maximal compact subgroup of $G$. Moreover, any compact subgroup of $G$ must be contained in $A$, so $A$ is the unique maximal compact subgroup of $G$.
+    It follows in particular that any subgroup of $G$ strictly containing $A$ is not compact, so $A$ is a maximal compact subgroup of $G$. Moreover, any compact subgroup of $G$ must be contained in $A$, so $A$ is the unique maximal compact subgroup of $G$.
 
-    %In particular, $((h_j^{-1}x)^{mn_j})_{m \in \bb{N}}$ is a sequence of distinct elements of $B$. (This is because $h_j \in A \subset B$ and $x \in B$ and $B$ is a group.) 
-    %Now define $U_m = G \setminus \{(h_j^{-1}x)^{mn_j}\}$ for every $m \in \bb{N}$. Then $\{U_m\}_m$ is an open cover of $B$. It is clear, however, that it admits no finite subcover of $B$, since such a subcover would necessarily omit elements of the sequence $((h_j^{-1}x)^{mn_j})_{m \in \bb{N}}$. Therefore, $B$ is not compact. We have shown that $A$ is a maximal compact subgroup of $G$.
+    %In particular, $((g_j^{-1}x)^{mn_j})_{m \in \bb{N}}$ is a sequence of distinct elements of $B$. (This is because $g_j \in A \subset B$ and $x \in B$ and $B$ is a group.) 
+    %Now define $U_m = G \setminus \{(g_j^{-1}x)^{mn_j}\}$ for every $m \in \bb{N}$. Then $\{U_m\}_m$ is an open cover of $B$. It is clear, however, that it admits no finite subcover of $B$, since such a subcover would necessarily omit elements of the sequence $((g_j^{-1}x)^{mn_j})_{m \in \bb{N}}$. Therefore, $B$ is not compact. We have shown that $A$ is a maximal compact subgroup of $G$.
     % Then $\{U_m\}_m$ is an open cover of $G$, and in particular of $B$. Suppose that there is a finite subcover $U_{m_1}, \ldots, U_{m_r}$ of $B$. Let $\overline{m} \in \bb{N} \setminus \{m_1, \ldots, m_r\}$. Then
     % \begin{equation*}
-    %     (\pi \circ \phi)\left((h_j^{-1}x)^{\overline{m}n_j}\right) \not\in \bigcup_{l=1}^r (\pi \circ \phi)
+    %     (\pi \circ \phi)\left((g_j^{-1}x)^{\overline{m}n_j}\right) \not\in \bigcup_{l=1}^r (\pi \circ \phi)
     % \end{equation*}
 \end{enumerate}
 
@@ -156,7 +156,7 @@
     
     Since $\bb{R}^n$ and $\mathrm{SO}(n)$ are both Lie groups, and $\alpha$ is obviously smooth, $E(n)$ is a Lie group by (iii). Let $\beta : E(n) \times \bb{R}^n \to \bb{R}^n : ((g,x),y) \mapsto gy+x$ be the natural action. We show now that $\beta$ is free and transitive.
 
-    Let $(g,x) \in E(n)$ and suppose $\beta((g,x),y) = y$ for all $y \in \bb{R}^n$. Then $gy+x = y$, which is equivalent to $x = (\mathbbm{1}-g)(y)$. This can only hold for all $y$ if $g = \mathbbm{1}$ and thus $x=0$, so that $(g,x) = (\mathbbm{1},0)$ is the identity element in $E(n)$. Therefore, $\beta$ is free. Furthermore, let $y,z \in \bb{R}^n$. Then $g((\mathbbm{1}, z-y),y) = y+z-y = z$, so $\beta$ is transitive.
+    Let $(g,x) \in E(n)$ and suppose $\beta((g,x),y) = y$ for all $y \in \bb{R}^n$. Then $gy+x = y$, which is equivalent to $x = (\mathbbm{1}-g)(y)$. This can only hold for all $y$ if $g = \mathbbm{1}$ and $x=0$, so that $(g,x) = (\mathbbm{1},0)$ is the identity element in $E(n)$. Therefore, $\beta$ is free. Furthermore, let $y,z \in \bb{R}^n$. Then $g((\mathbbm{1}, z-y),y) = y+z-y = z$, so $\beta$ is transitive.
 
     Since $\beta$ is transitive, its orbit through any $(g,x) \in E(n)$ is $E(n)$ is $E(n)$ itself, so the orbit space is trivial.
 \end{enumerate}
@@ -181,7 +181,7 @@
 
     \item Let $A \in \Hom_i (\bb{K}^k, \bb{K}^n)$ and $g \in G$. Let $x \in p(\alpha(g,A)) = \im(g \circ A)$. Then $x = g(A(y))$ for some $y \in \bb{K}^k$, so $x \in g(\im A) = g(p(A)) = \beta(g, p(A))$. Therefore, $p(\alpha(g,A)) \subset \beta(g, p(A))$. Conversely, let $x \in \beta(g, p(A)) = g(p(A))$. Then $g^{-1}(x) \in p(A) = \im A$, so $g^{-1}(x) = A(y)$ for some $y \in \bb{K}^k$. It follows that $x = (g \circ A)(y)$, so $x \in \im(g \circ A) = p(\alpha(g,A))$. Therefore, $\beta(g, p(A)) \subset p(\alpha(g,A))$. Hence, these sets are equal.
     
-    \item The Lie group $G$ inherits its smooth structure from $\bb{K}^{n^2} \cong \Mat_{n,n}(\bb{K})$, so identify $G$ as a subspace of $\Mat_{n,n}(\bb{K})$. Similarly, $\Hom(\bb{K}^k, \bb{K}^n) \cong \Mat_{n,k}(\bb{K})$ as a vector space (and thus as a manifold), so we can identify $\Hom_i(\bb{K}^k, \bb{K}^n)$ as an open subset of $\Mat_{n,k}(\bb{K})$. As an open subset of a manifold, $\Hom_i(\bb{K}^k, \bb{K}^n)$ is a manifold itself, with its smooth structure inherited from $\Mat_{n,k}(\bb{K})$. With these identifications, $\alpha$ simply corresponds to matrix multiplication, which is smooth since it is smooth in the matrix components.
+    \item The Lie group $G$ inherits its smooth structure from $\bb{K}^{n^2} \cong \Mat_{n,n}(\bb{K})$, so identify $G$ as a subspace of $\Mat_{n,n}(\bb{K})$. Similarly, $\Hom(\bb{K}^k, \bb{K}^n) \cong \Mat_{n,k}(\bb{K})$ as a vector space, and therefore as a manifold, so we can identify $\Hom_i(\bb{K}^k, \bb{K}^n)$ as an open subset of $\Mat_{n,k}(\bb{K})$. As an open subset of a manifold, $\Hom_i(\bb{K}^k, \bb{K}^n)$ is a manifold itself, with its smooth structure inherited from $\Mat_{n,k}(\bb{K})$. With these identifications, $\alpha$ simply corresponds to matrix multiplication, which is smooth since it is smooth in the matrix components.
     
     \item By (ii), the diagram
     \begin{equation*}
@@ -190,7 +190,7 @@
             & G \times G_{n,k}(\bb{K}) \arrow[u, "\beta"]
         \end{tikzcd}
     \end{equation*}
-    commutes. Since $\mathrm{id} : G \to G$ and $p$ are both smooth submersions, $\mathrm{id} \times p$ is a smooth submersion. By (iii), $\alpha$ is smooth, and therefore $p \circ \alpha$ is smooth. According to Lemma 6.13 in the lecture notes, it follows that $\beta$ is smooth.
+    commutes. Since $\mathrm{id} : G \to G$ and $p$ are both smooth submersions, $\mathrm{id} \times p$ is a smooth submersion. By (iii), $\alpha$ is smooth, and therefore $p \circ \alpha$ is smooth. According to Lemma 6.13, it follows that $\beta$ is smooth.
 
     \item Let $V, W \in G_{n,k}(\bb{K})$ and let $(v_1, \ldots v_k)$ and $(w_1, \ldots, w_k)$ be bases for $V$ and $W$, respectively. Let $g \in \GL(n,\bb{K}) = G$ be the map taking $v_j$ to $w_j$ for every $j \in \{1, \ldots, k\}$. Then $\beta(g,V) = g(V) = W$. The spaces $V$ and $W$ were arbitrary, so $\beta$ is a transitive group action.
     

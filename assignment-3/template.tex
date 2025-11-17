@@ -30,6 +30,7 @@
 \DeclareMathOperator{\diag}{\mathrm{diag}}
 \renewcommand{\d}{\mathrm{d}}
 
+\newtheorem{lemma}{Lemma}
 \theoremstyle{remark}
 \newtheorem{questionpart}{}
 \renewcommand*{\thequestionpart}{\textbf{(\alph{questionpart})}}
@@ -47,7 +48,50 @@
 
 \section*{Week 9, Exercise 3}
 \begin{enumerate}[label=(\roman*)]
-    \item We assume $C(G)$ to be equipped with the supremum norm $\lVert \, \cdot \, \rVert_\infty$. For any $g \in G$, the map $L_g : V \to V$ is linear. Since $V$ is a finite dimensional normed space, $L_g$ is continuous. Now fix $\eps$ and select $(h, \psi) \in G \times V$. We want to show that there exists an open neighbourhood of $(h, \psi)$ such that $\lVert L_g(\phi) - L_h(\psi) \rVert_\infty < \eps$ for all $(g, \phi)$ in that neighbourhood.
+    \item We assume $C(G)$ is equipped with the supremum norm $\lVert \, \cdot \, \rVert_\infty$. For any $g \in G$, the map $L_g : V \to V$ is linear. Since $V$ is a finite-dimensional normed space, $L_g$ is continuous. Now fix $\eps$ and select $(h, \psi) \in G \times V$. We want to show that there exists an open neighbourhood of $(h, \psi)$ such that $\lVert L_g(\phi) - L_h(\psi) \rVert_\infty < \eps$ for all $(g, \phi)$ in that neighbourhood.
+
+    Let $B(\psi, \eps/2) \subset V$ be the open ball around $\psi$ with radius $\eps/2$ with respect to the supremum norm. Let $A = L_h^{-1}(B(\psi, \eps/2))$, which is open since $L_h$ is continuous. Then, for all $\phi \in A$, and for any $g \in G$,
+    \begin{align*}
+        \lVert L_g(\phi) - L_g(\psi) \rVert_\infty &= \sup_{x \in G} \lvert \phi(g^{-1}x) - \psi(g^{-1}x) \rvert \\
+        &= \sup_{x \in G} \lvert \phi(h^{-1}x) - \psi(h^{-1}x) \rvert \\
+        &= \lVert L_h(\phi) - L_h(\psi) \rVert_\infty \\
+        &< \eps/2,
+    \end{align*}
+    where we used that the left multiplications $\ell_g$ and $\ell_{h^{-1}}$ are bijections. Furthermore, for any $g \in G$,
+    \begin{equation*}
+        \lVert L_g(\psi) - L_h(\psi) \rVert_\infty = \sup_{x \in G} \lvert \psi(g^{-1}x) - \psi(h^{-1}x) \rvert = \sup_{x \in G} \lvert \psi(g^{-1}hx) - \psi(x) \rvert.
+    \end{equation*}
+    %Since the domain of $\psi$, namely $G$, is compact, and $\psi$ is continuous, we can apply uniform continuity on topological groups (similarly to the proof of Proposition 20.10): there exists an open neighbourhood $U \subset G$ of $e$ such that $\lvert \psi(y^{-1}x) - \psi(x) \rvert < \eps/3$ for all $x, y \in U$. Therefore, $\lVert L_g(\psi) - L_h(\psi) \rVert_\infty < \eps/2$ for all $g \in hU$.
+    By (ii) (which we can use since it does not depend on the result we are proving here), there is a neighbourhood $U$ of $e \in G$ such that the latter expression is less than $\eps/2$ for all $g \in hV$, where $V$ is the open set $\{x \in G \mid x^{-1} \in U\}$. (It is open since $x \mapsto x^{-1}$ is a homeomorphism of the topological group $G$.)
+
+    Now $hV \times A$ is an open neighbourhood of $(h, \psi)$ such that, for all $(g, \phi) \in hV \times A$,
+    \begin{equation*}
+        \lVert L_g(\phi) - L_h(\psi) \rVert_\infty \leq \lVert L_g(\phi) - L_g(\psi) \rVert_\infty + \lVert L_g(\psi) - L_h(\psi) \rVert_\infty < \eps.
+    \end{equation*}
+    Since we chose $\eps >0$ and $(h, \psi) \in G \times V$ arbitrarily, it follows that $L : G \times V \to V$ is continuous. Clearly, it is also a still a left action, so $L$ is a continuous representation of $G$ in $V$.
+
+    \item We will use the following Lemma.
+    \begin{lemma} \label{lemma1}
+        Let $G$ be a topological group. For any open neighbourhood $E \subset G$ of $e$, there exists an open neighbourhood $A$ of $e$ contained in $E$ such that $AA^{-1} \subset E$.
+    \end{lemma}
+    \begin{proof}
+        The map
+        \begin{equation*}
+            \varphi : G \times G : (x, y) \mapsto xy^{-1}
+        \end{equation*}
+        is continuous since the group multiplication and inverse operation are continuous. Therefore, $\varphi^{-1}(E)$ is open. This set is nonempty since it contains $(e,e)$. Moreover, the projections $p_1(x, y) = x$ and $p_2(x, y) = y$ are open maps, so
+        \begin{equation*}
+            A := p_1(\varphi^{-1}(E)) \cap p_2(\varphi^{-1}(E))
+        \end{equation*}
+        is open, and nonempty since it contains $e$. Now for all $x, y \in A$, $xy^{-1} = \varphi(x, y) \in E$, so $e \in AA^{-1} \subset E$.
+    \end{proof}
+
+    Let $E_g = f^{-1}(B(f(g), \eps/2)) \, g^{-1}$ for every $g \in G$, where $B(f(g), \eps/2) \subset \bb{R}$ is the open interval centered at $f(g)$ with width $\eps$. For every $g \in G$, $e \in E_g$, so by Lemma \ref{lemma1} there is an open neighbourhood $A_g$ of $e$ contained in $E_g$ such that $A_gA_g^{-1} \subset E$. Let $B_g = A_g \cap A_g^{-1}$ for every $g \in G$. Then $g \in B_g g$ since $e \in B_g$, so $\{B_g g\}_{g \in G}$ is an open cover of $G$. Since $G$ is compact, there is a finite subcover $B_{g_1} g_1, \ldots, B_{g_r} g_r$. Let $U = B_{g_1} \cap \cdots \cap B_{g_r}$, an open neighbourhood of $e$.
+
+    Now pick $u \in U$ and $g \in G$. There is an $i \in \{1, \ldots, r\}$ for which $g \in B_{g_i} g_i$. But $B_{g_i} \subset A_{g_i} \subset E_{g_i}$, so $g \in E_{g_i} g_i$. Moreover, $ug \in B_i B_i g_i \subset A_{g_i} A_{g_i}^{-1} g_i \subset E_{g_i} g_i$. Therefore,
+    \begin{equation*}
+        \lvert f(ug) - f(g) \rvert \leq \lvert f(ug) - f(g_i)\rvert + \lvert f(g_i) - f(g) \rvert < \frac{\eps}{2} + \frac{\eps}{2} = \eps.
+    \end{equation*}
 \end{enumerate}
 
 \section*{Week 10, Exercise 3}

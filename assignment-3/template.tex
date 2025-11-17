@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\usepackage{microtype}
+\usepackage{enumitem}
+
+% macro for bra kets
+\usepackage{mathtools}
+\DeclarePairedDelimiter\bra{\langle}{\rvert}
+\DeclarePairedDelimiter\ket{\lvert}{\rangle}
+\DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1\,\delimsize\vert\,\mathopen{}#2}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\eps}{\varepsilon}
+\renewcommand{\Im}{\mathrm{Im}}
+\renewcommand{\Re}{\mathrm{Re}}
+
+\newcommand{\bb}{\mathbb}
+
+\newcommand{\SL}{\mathrm{SL}}
+\DeclareMathOperator{\diag}{\mathrm{diag}}
+\renewcommand{\d}{\mathrm{d}}
+
+\theoremstyle{remark}
+\newtheorem{questionpart}{}
+\renewcommand*{\thequestionpart}{\textbf{(\alph{questionpart})}}
+
+\title{Lie Groups - Assignment 3}
+\author{Quinten Vergeylen}
+\date{}
+
+\begin{document}
+\setstretch{1.1}
+\maketitle
+
+\section*{Week 8, Exercise 1}
+
+
+\section*{Week 9, Exercise 3}
+\begin{enumerate}[label=(\roman*)]
+    \item We assume $C(G)$ to be equipped with the supremum norm $\lVert \, \cdot \, \rVert_\infty$. For any $g \in G$, the map $L_g : V \to V$ is linear. Since $V$ is a finite dimensional normed space, $L_g$ is continuous. Now fix $\eps$ and select $(h, \psi) \in G \times V$. We want to show that there exists an open neighbourhood of $(h, \psi)$ such that $\lVert L_g(\phi) - L_h(\psi) \rVert_\infty < \eps$ for all $(g, \phi)$ in that neighbourhood.
+\end{enumerate}
+
+\section*{Week 10, Exercise 3}
+
+
+\end{document}

@@ -1,0 +1,142 @@
+\documentclass{article}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\usepackage{microtype}
+\usepackage{enumitem}
+
+% macro for bra kets
+\usepackage{mathtools}
+\DeclarePairedDelimiter\bra{\langle}{\rvert}
+\DeclarePairedDelimiter\ket{\lvert}{\rangle}
+\DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1\,\delimsize\vert\,\mathopen{}#2}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\eps}{\varepsilon}
+\renewcommand{\Im}{\mathrm{Im}}
+\renewcommand{\Re}{\mathrm{Re}}
+
+\newcommand{\bb}{\mathbb}
+
+\newcommand{\SL}{\mathrm{SL}}
+\DeclareMathOperator{\diag}{\mathrm{diag}}
+\renewcommand{\d}{\mathrm{d}}
+
+\newtheorem{lemma}{Lemma}
+\theoremstyle{remark}
+\newtheorem{questionpart}{}
+\renewcommand*{\thequestionpart}{\textbf{(\alph{questionpart})}}
+
+\title{Lie Groups - Assignment 3}
+\author{Quinten Vergeylen}
+\date{}
+
+\begin{document}
+\setstretch{1.1}
+\maketitle
+
+\section*{Week 8, Exercise 1}
+
+
+\section*{Week 9, Exercise 3}
+\begin{enumerate}[label=(\roman*)]
+    \item We assume $C(G)$ is equipped with the supremum norm $\lVert \, \cdot \, \rVert_\infty$. For any $g \in G$, the map $L_g : V \to V$ is linear. Since $V$ is a finite-dimensional normed space, $L_g$ is continuous. Now fix $\eps$ and select $(h, \psi) \in G \times V$. We want to show that there exists an open neighbourhood of $(h, \psi)$ such that $\lVert L_g(\phi) - L_h(\psi) \rVert_\infty < \eps$ for all $(g, \phi)$ in that neighbourhood.
+
+    Let $B(\psi, \eps/2) \subset V$ be the open ball around $\psi$ with radius $\eps/2$ with respect to the supremum norm. Let $A = L_h^{-1}(B(\psi, \eps/2))$, which is open since $L_h$ is continuous. Then, for all $\phi \in A$, and for any $g \in G$,
+    \begin{align*}
+        \lVert L_g(\phi) - L_g(\psi) \rVert_\infty &= \sup_{x \in G} \lvert \phi(g^{-1}x) - \psi(g^{-1}x) \rvert \\
+        &= \sup_{x \in G} \lvert \phi(h^{-1}x) - \psi(h^{-1}x) \rvert \\
+        &= \lVert L_h(\phi) - L_h(\psi) \rVert_\infty \\
+        &< \eps/2,
+    \end{align*}
+    where we used that the left multiplications $\ell_g$ and $\ell_{h^{-1}}$ are bijections. Furthermore, for any $g \in G$,
+    \begin{equation*}
+        \lVert L_g(\psi) - L_h(\psi) \rVert_\infty = \sup_{x \in G} \lvert \psi(g^{-1}x) - \psi(h^{-1}x) \rvert = \sup_{x \in G} \lvert \psi(g^{-1}hx) - \psi(x) \rvert.
+    \end{equation*}
+    %Since the domain of $\psi$, namely $G$, is compact, and $\psi$ is continuous, we can apply uniform continuity on topological groups (similarly to the proof of Proposition 20.10): there exists an open neighbourhood $U \subset G$ of $e$ such that $\lvert \psi(y^{-1}x) - \psi(x) \rvert < \eps/3$ for all $x, y \in U$. Therefore, $\lVert L_g(\psi) - L_h(\psi) \rVert_\infty < \eps/2$ for all $g \in hU$.
+    By (ii) (which we can use since it does not depend on the result we are proving here), there is a neighbourhood $U$ of $e \in G$ such that the latter expression is less than $\eps/2$ for all $g \in hV$, where $V$ is the open set $\{x \in G \mid x^{-1} \in U\}$. (It is open since $x \mapsto x^{-1}$ is a homeomorphism of the topological group $G$.)
+
+    Now $hV \times A$ is an open neighbourhood of $(h, \psi)$ such that, for all $(g, \phi) \in hV \times A$,
+    \begin{equation*}
+        \lVert L_g(\phi) - L_h(\psi) \rVert_\infty \leq \lVert L_g(\phi) - L_g(\psi) \rVert_\infty + \lVert L_g(\psi) - L_h(\psi) \rVert_\infty < \eps.
+    \end{equation*}
+    Since we chose $\eps >0$ and $(h, \psi) \in G \times V$ arbitrarily, it follows that $L : G \times V \to V$ is continuous. Clearly, it is also a still a left action, so $L$ is a continuous representation of $G$ in $V$.
+
+    \item We will use the following Lemma.
+    \begin{lemma} \label{lemma1}
+        Let $G$ be a topological group. For any open neighbourhood $E \subset G$ of $e$, there exists an open neighbourhood $A$ of $e$ contained in $E$ such that $AA^{-1} \subset E$.
+    \end{lemma}
+    \begin{proof}
+        The map
+        \begin{equation*}
+            \varphi : G \times G : (x, y) \mapsto xy^{-1}
+        \end{equation*}
+        is continuous since the group multiplication and inverse operation are continuous. Therefore, $\varphi^{-1}(E)$ is open. This set is nonempty since it contains $(e,e)$. Moreover, the projections $p_1(x, y) = x$ and $p_2(x, y) = y$ are open maps, so
+        \begin{equation*}
+            A := p_1(\varphi^{-1}(E)) \cap p_2(\varphi^{-1}(E))
+        \end{equation*}
+        is open, and nonempty since it contains $e$. Now for all $x, y \in A$, $xy^{-1} = \varphi(x, y) \in E$, so $e \in AA^{-1} \subset E$.
+    \end{proof}
+
+    Let $E_g = f^{-1}(B(f(g), \eps/2)) \, g^{-1}$ for every $g \in G$, where $B(f(g), \eps/2) \subset \bb{R}$ is the open interval centered at $f(g)$ with width $\eps$. For every $g \in G$, $e \in E_g$, so by Lemma \ref{lemma1} there is an open neighbourhood $A_g$ of $e$ contained in $E_g$ such that $A_gA_g^{-1} \subset E$. Let $B_g = A_g \cap A_g^{-1}$ for every $g \in G$. Then $g \in B_g g$ since $e \in B_g$, so $\{B_g g\}_{g \in G}$ is an open cover of $G$. Since $G$ is compact, there is a finite subcover $B_{g_1} g_1, \ldots, B_{g_r} g_r$. Let $U = B_{g_1} \cap \cdots \cap B_{g_r}$, an open neighbourhood of $e$.
+
+    Now pick $u \in U$ and $g \in G$. There is an $i \in \{1, \ldots, r\}$ for which $g \in B_{g_i} g_i$. But $B_{g_i} \subset A_{g_i} \subset E_{g_i}$, so $g \in E_{g_i} g_i$. Moreover, $ug \in B_i B_i g_i \subset A_{g_i} A_{g_i}^{-1} g_i \subset E_{g_i} g_i$. Therefore,
+    \begin{equation*}
+        \lvert f(ug) - f(g) \rvert \leq \lvert f(ug) - f(g_i)\rvert + \lvert f(g_i) - f(g) \rvert < \frac{\eps}{2} + \frac{\eps}{2} = \eps.
+    \end{equation*}
+
+    \item Fix $g \in G$. Clearly, $L_g$ is linear. Since
+    \begin{equation*}
+        \lVert L_g(f) \rVert_\infty = \sup_{x \in G} \lvert L_g(f)(x) \rvert = \sup_{x \in G} \lvert f(g^{-1}x) \rvert = \sup_{x \in G} \lvert f(x) \rvert = \lVert f \rVert_\infty
+    \end{equation*}
+    (where we used that $\{g^{-1}x \mid x \in G\} = G$), $L_g$ is bounded linear operator between normed spaces, so it is continuous.
+
+    Now we could proceed as in (i), since the second part of that proof does not depend on the finite dimensionality of the function space. However, here I will assume $G$ is a Lie group, so we can use Proposition 20.8 from van de Ban's lecture notes.
+    
+    Fix $f \in C(G)$ and select $\eps >0$. By part (ii), there exists a neighbourhood $V$ of $e \in G$ such that
+    \begin{equation*}
+        \lvert L_g(f)(x) - L_e(f)(x) \rvert = \lvert f(g^{-1}x) - f(x) \rvert < \eps
+    \end{equation*}
+    for all $x \in G$, $g \in V$. Indeed, we can take $V= U^{-1}$, where $U$ is the neighbourhood of $e$ as in (ii). The set $V$ is open since $V = \iota^{-1}(U)$ where $\iota$ is the inverse operation on $G$, which is continuous, and $e \in V$ since $e^{-1} = e$. It follows that,
+    \begin{equation*}
+        \lVert L_g(f)- L_e(f) \rVert_\infty = \sup_{x \in G} \lvert L_g(f)(x) - L_e(f)(x) \rvert \leq \eps
+    \end{equation*}
+    for all $g \in V$. Since $\eps>0$ was arbitrary, we have found that $g \mapsto L_g(f)$ is continuous at $e$.  By Proposition 20.8, $L : G \times C(G) \to C(G)$ is continuous, so the representation $L$ of $G$ on $C(G)$ is continuous.
+
+    
+\end{enumerate}
+
+\section*{Week 10, Exercise 3}
+\begin{enumerate}[label = (\roman*)]
+    \item It suffices to show that there is a $g\in \mathrm{SO}(n)$ such that $gv_j = e_j$ for$j=1,2$, where $e_j$ are the standard basis vectors in $\bb{C}_n$. Indeed, if $gv_j=e_j$ and $hw_j = e_j$ for $g, h \in \mathrm{SO}(n)$ and all $j$, then $h^{-1}g \in \mathrm{SO}(n)$ and $h^{-1}gv_j = w_j$ for all $j$.
+    
+    By Example 15.6 (van de Ban), $\mathrm{SO}(n)$ acts transitively on $S^{n-1} \subset \bb{R}^n$. Since $v_1$ and $e_1$ are both elements of $S^{n-1}$, there exists a $g_1 \in \mathrm{SO}(n)$ such that $g_1v_1 = e_1$. Now, $v_2$ is orthogonal to $v_1$, so, because $g_1$ preserves the inner product, $g_1v_2$ is orthogonal to $g_1v_1 = e_1$. Therefore $g_1v_2 \in \{(x_1, \ldots, x_n) \in S^{n-1} \mid x_1 = 0\}$, which we identify with $S^{n-2}$. Note also that $e_2 \in S^{n-2}$. As observed in Example 15.6, the stabiliser subgroup $\mathrm{SO}(n)_{e_1}$ consists of matrices of the form
+    \begin{equation*}
+        \begin{pmatrix}
+            1 & 0 \\ 0 & B
+        \end{pmatrix}
+    \end{equation*}
+    with $B \in SO(n-1)$, and the action of this subgroup on an element $\begin{pmatrix} 0 & w \end{pmatrix}^\top \in S^{n-2}$ is
+    \begin{equation*}
+        \begin{pmatrix}
+            1 & 0 \\ 0 & B
+        \end{pmatrix}
+        \begin{pmatrix} 0 \\ w \end{pmatrix}
+        =
+        \begin{pmatrix}
+            0 \\ Bw
+        \end{pmatrix},
+    \end{equation*}
+    so $\mathrm{SO}(n)_{e_1}$ acts exactly like $\mathrm{SO}(n-1)$ on $S^{n-2}$. This is again a transitive group action by Example 15.6 since $n \geq 3$, which implies that there is a $g_2 \in \mathrm{SO}(n)_{e_1} \subset \mathrm{SO}(n)$ such that $g_2(g_1v_2) = e_2$. Since $g_2$ is an element of the stabiliser subgroup at $e_1 = g_1v_1$, we have $g_2(g_1v_1) = e_1$. Therefore, the element $g = g_1g_2$ of $\mathrm{SO}(n)$ satisfies $gv_1 = e_1$ and $gv_2 = e_2$.
+\end{enumerate}
+
+
+\end{document}

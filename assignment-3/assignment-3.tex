@@ -118,20 +118,26 @@
     \begin{equation*}
         \pi(g)\pi(h)v = \pi(g, \pi(h, v)) = \pi(gh, v) = \pi(hg, v) = \pi(h, \pi(g, v)) = \pi(h)\pi(g)(v).
     \end{equation*}
-    In the first and last equality we used the definition of $\pi$; in the second and fourth equality we used that $\pi$ is a group action; and in the third equality we used that $G$ is commutative. It follows that $\pi(g) : V \to V$ is an equivariant map. Then, by Shur's lemma, $\pi(g) = \lambda_g I_V$ for some $\lambda_g \in \bb{C}$. Therefore $\pi(g)$ leaves every subspace of $V$ invariant. This holds for every $g \in G$. Hence, if $\pi$ is irreducible, then $\dim V = 1$, since in that case the only linear subspaces of $V$ are $0$ and $V$ itself. Conversely, if $\dim V = 1$, then the only linear subspaces of $V$ are $0$ and $V$ itself, so $\pi$ is trivially irreducible.
+    In the first and last equality we used the definition of $\pi$; in the second and fourth equality we used that $\pi$ is a group action; and in the third equality we used that $G$ is commutative. It follows that $\pi(g) : V \to V$ is an equivariant map. Then, by Shur's lemma, $\pi(g) = \lambda_g I_V$ for some $\lambda_g \in \bb{C}$. Therefore $\pi(g)$ leaves every subspace of $V$ invariant. This holds for every $g \in G$. Hence, if $\pi$ is irreducible, then $\dim V = 1$, since in that case the only linear subspaces of $V$ are $\{0\}$ and $V$ itself. Conversely, if $\dim V = 1$, then the only linear subspaces of $V$ are $\{0\}$ and $V$ itself, so $\pi$ is trivially irreducible.
 
     \item This is an immediate consequence of (i) and Corollary 20.19 (van de Ban). From the proofs of Corollary 20.19 and Lemma 20.18 it is clear that the subspaces are mutually orthogonal.
     
     \item The natural representation of $\mathrm{SO}(2)$ on $\bb{C}^2$ is unitary. Indeed, an element of $\mathrm{SO}(2)$ is represented by
     \begin{equation*}
         \begin{pmatrix}
-        \cos \theta & \sin \theta \\ -\sin \theta & \cos\theta
+        \cos \theta & -\sin \theta \\ \sin \theta & \cos\theta
         \end{pmatrix},
     \end{equation*}
     for some $\theta \in [0, 2\pi)$, which is a unitary matrix. Furthermore, the representation is finite-dimensional since $\bb{C}^2$. Lastly, $\mathrm{SO}(2)$ is commutative, since it is isomorphic to the clearly commutative group $S^1$.
     Therefore, we can use (i): $\dim \bb{C} > 1$, so the representation is not irreducible.
 
-    \item 
+    \item Suppose that there is an invariant subspace $W \subsetneq V$ and $W \neq \{0\}$. Let $w \in W$. Then, for every $g \in \mathrm{SO}(2)$, there exists a $\lambda_g \in \bb{R}$ such that $gw = \lambda_g w$, since $W$ must be one-dimensional. In other words, $w$ is a joint eigenvector of all elements of $\mathrm{SO}(2)$, always with a real eigenvalue. In particular, there exists such a $\lambda_g$ for the element $g \in \mathrm{SO}(2)$ represented by
+    \begin{equation*}
+        \begin{pmatrix}
+            0 & -1 \\ 1 & 0
+        \end{pmatrix}.
+    \end{equation*}
+    However, the eigenvalues of this matrixare $i$ and $-i$, neither of which are real. This is a contradiction, so it follows that such a subspacee $W$ cannot exist. In other words, the only invariant subspaces of $\bb{R}^2$ are $\{0\}$ and $\bb{R}^2$ itself, so the representation is irreducible.
 \end{enumerate}
 
 % \section*{Week 10, Exercise 4}

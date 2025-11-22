@@ -109,34 +109,66 @@
     \begin{equation*}
         \lVert L_g(f)- L_e(f) \rVert_\infty = \sup_{x \in G} \lvert L_g(f)(x) - L_e(f)(x) \rvert \leq \eps
     \end{equation*}
-    for all $g \in V$. Since $\eps>0$ was arbitrary, we have found that $g \mapsto L_g(f)$ is continuous at $e$.  By Proposition 20.8, $L : G \times C(G) \to C(G)$ is continuous, so the representation $L$ of $G$ on $C(G)$ is continuous.
-
-    
+    for all $g \in V$. Since $\eps>0$ was arbitrary, we have found that $g \mapsto L_g(f)$ is continuous at $e$.  By Proposition 20.8, $L : G \times C(G) \to C(G)$ is continuous, so the representation $L$ of $G$ on $C(G)$ is continuous.    
 \end{enumerate}
 
 \section*{Week 10, Exercise 3}
 \begin{enumerate}[label = (\roman*)]
-    \item It suffices to show that there is a $g\in \mathrm{SO}(n)$ such that $gv_j = e_j$ for$j=1,2$, where $e_j$ are the standard basis vectors in $\bb{C}_n$. Indeed, if $gv_j=e_j$ and $hw_j = e_j$ for $g, h \in \mathrm{SO}(n)$ and all $j$, then $h^{-1}g \in \mathrm{SO}(n)$ and $h^{-1}gv_j = w_j$ for all $j$.
-    
-    By Example 15.6 (van de Ban), $\mathrm{SO}(n)$ acts transitively on $S^{n-1} \subset \bb{R}^n$. Since $v_1$ and $e_1$ are both elements of $S^{n-1}$, there exists a $g_1 \in \mathrm{SO}(n)$ such that $g_1v_1 = e_1$. Now, $v_2$ is orthogonal to $v_1$, so, because $g_1$ preserves the inner product, $g_1v_2$ is orthogonal to $g_1v_1 = e_1$. Therefore $g_1v_2 \in \{(x_1, \ldots, x_n) \in S^{n-1} \mid x_1 = 0\}$, which we identify with $S^{n-2}$. Note also that $e_2 \in S^{n-2}$. As observed in Example 15.6, the stabiliser subgroup $\mathrm{SO}(n)_{e_1}$ consists of matrices of the form
+    \item Let $g \in G$. Then, for all $h \in G$,
     \begin{equation*}
-        \begin{pmatrix}
-            1 & 0 \\ 0 & B
-        \end{pmatrix}
+        \pi(g)\pi(h)v = \pi(g, \pi(h, v)) = \pi(gh, v) = \pi(hg, v) = \pi(h, \pi(g, v)) = \pi(h)\pi(g)(v).
     \end{equation*}
-    with $B \in SO(n-1)$, and the action of this subgroup on an element $\begin{pmatrix} 0 & w \end{pmatrix}^\top \in S^{n-2}$ is
+    In the first and last equality we used the definition of $\pi$; in the second and fourth equality we used that $\pi$ is a group action; and in the third equality we used that $G$ is commutative. It follows that $\pi(g) : V \to V$ is an equivariant map. Then, by Shur's lemma, $\pi(g) = \lambda_g I_V$ for some $\lambda_g \in \bb{C}$. Therefore $\pi(g)$ leaves every subspace of $V$ invariant. This holds for every $g \in G$. Hence, if $\pi$ is irreducible, then $\dim V = 1$, since in that case the only linear subspaces of $V$ are $0$ and $V$ itself. Conversely, if $\dim V = 1$, then the only linear subspaces of $V$ are $0$ and $V$ itself, so $\pi$ is trivially irreducible.
+
+    \item This is an immediate consequence of (i) and Corollary 20.19 (van de Ban). From the proofs of Corollary 20.19 and Lemma 20.18 it is clear that the subspaces are mutually orthogonal.
+    
+    \item The natural representation of $\mathrm{SO}(2)$ on $\bb{C}^2$ is unitary. Indeed, an element of $\mathrm{SO}(2)$ is represented by
     \begin{equation*}
         \begin{pmatrix}
-            1 & 0 \\ 0 & B
-        \end{pmatrix}
-        \begin{pmatrix} 0 \\ w \end{pmatrix}
-        =
-        \begin{pmatrix}
-            0 \\ Bw
+        \cos \theta & \sin \theta \\ -\sin \theta & \cos\theta
         \end{pmatrix},
     \end{equation*}
-    so $\mathrm{SO}(n)_{e_1}$ acts exactly like $\mathrm{SO}(n-1)$ on $S^{n-2}$. This is again a transitive group action by Example 15.6 since $n \geq 3$, which implies that there is a $g_2 \in \mathrm{SO}(n)_{e_1} \subset \mathrm{SO}(n)$ such that $g_2(g_1v_2) = e_2$. Since $g_2$ is an element of the stabiliser subgroup at $e_1 = g_1v_1$, we have $g_2(g_1v_1) = e_1$. Therefore, the element $g = g_1g_2$ of $\mathrm{SO}(n)$ satisfies $gv_1 = e_1$ and $gv_2 = e_2$.
+    for some $\theta \in [0, 2\pi)$, which is a unitary matrix. Furthermore, the representation is finite-dimensional since $\bb{C}^2$. Lastly, $\mathrm{SO}(2)$ is commutative, since it is isomorphic to the clearly commutative group $S^1$.
+    Therefore, we can use (i): $\dim \bb{C} > 1$, so the representation is not irreducible.
+
+    \item 
 \end{enumerate}
+
+% \section*{Week 10, Exercise 4}
+% \begin{enumerate}[label = (\roman*)]
+%     \item It suffices to show that there is a $g\in \mathrm{SO}(n)$ such that $gv_j = e_j$ for$j=1,2$, where $e_j$ are the standard basis vectors in $\bb{C}_n$. Indeed, if $gv_j=e_j$ and $hw_j = e_j$ for $g, h \in \mathrm{SO}(n)$ and all $j$, then $h^{-1}g \in \mathrm{SO}(n)$ and $h^{-1}gv_j = w_j$ for all $j$.
+    
+%     By Example 15.6 (van de Ban),\footnote{Example 15.6 says $n \geq 0$ must hold, but I believe this to be a mistake since $\mathrm{SO(1)} = \{1\}$ does not act transitively on $S^0 = \{-1,1\} \subset \bb{R}$. However, the statements from the example do hold for $n \geq 1$. If the example did hold for $n=0$, then the argument I give in this exercise to show that $\pi$ is irreducible would contradict the result of exercise 3 of week 10.} $\mathrm{SO}(n)$ acts transitively on $S^{n-1} \subset \bb{R}^n$. Since $v_1$ and $e_1$ are both elements of $S^{n-1}$, there exists a $g_1 \in \mathrm{SO}(n)$ such that $g_1v_1 = e_1$. Now, $v_2$ is orthogonal to $v_1$, so, because $g_1$ preserves the inner product, $g_1v_2$ is orthogonal to $g_1v_1 = e_1$. Therefore $g_1v_2 \in \{(x_1, \ldots, x_n) \in S^{n-1} \mid x_1 = 0\}$, which we identify with $S^{n-2}$. Note also that $e_2 \in S^{n-2}$. As observed in Example 15.6, the stabiliser subgroup $\mathrm{SO}(n)_{e_1}$ consists of matrices of the form
+%     \begin{equation*}
+%         \begin{pmatrix}
+%             1 & 0 \\ 0 & B
+%         \end{pmatrix}
+%     \end{equation*}
+%     with $B \in SO(n-1)$, and the action of this subgroup on an element $\begin{pmatrix} 0 & w \end{pmatrix}^\top \in S^{n-2}$ is
+%     \begin{equation*}
+%         \begin{pmatrix}
+%             1 & 0 \\ 0 & B
+%         \end{pmatrix}
+%         \begin{pmatrix} 0 \\ w \end{pmatrix}
+%         =
+%         \begin{pmatrix}
+%             0 \\ Bw
+%         \end{pmatrix},
+%     \end{equation*}
+%     so $\mathrm{SO}(n)_{e_1}$ acts exactly like $\mathrm{SO}(n-1)$ on $S^{n-2}$. This is again a transitive group action by Example 15.6 (since $n \geq 3$, so $n-1 \geq 1+1$, which is required in the example---see footnote 1 on this page), which implies that there is a $g_2 \in \mathrm{SO}(n)_{e_1} \subset \mathrm{SO}(n)$ such that $g_2(g_1v_2) = e_2$. Since $g_2$ is an element of the stabiliser subgroup at $e_1 = g_1v_1$, we have $g_2(g_1v_1) = e_1$. Therefore, the element $g = g_1g_2$ of $\mathrm{SO}(n)$ satisfies $gv_1 = e_1$ and $gv_2 = e_2$.
+
+%     \item Let $T \in \mathfrak{c}$. Let $g \in \mathrm{SO(n)} \subset M_n(\bb{C})$ such that $gv_1 = w_1$ and $gv_2 = w_2$, as in (i). Then $Tg = gT$, so
+%     \begin{equation*}
+%         \langle Tw_1, w_2 \rangle = \langle Tgv_1, gv_2 \rangle = \langle gTv_1, gv_2 \rangle = \langle Tv_1, v_2 \rangle.
+%     \end{equation*}
+%     The last equality holds because elements of $\mathrm{SO}(n)$ preserve the standard inner product: for all $a, b \in \bb{C}^n$,
+%     \begin{equation*}
+%         \langle ga, gb \rangle = \langle a, \overline{g}^\top gb \rangle = \langle a, g^\top gb \rangle = \langle a, b \rangle,
+%     \end{equation*}
+%     where we used that $g$ has real components and $g\top g$ is the identity matrix since $g$ is orthogonal.
+
+%     \item 
+% \end{enumerate}
 
 
 \end{document}

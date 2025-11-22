@@ -44,7 +44,27 @@
 \maketitle
 
 \section*{Week 8, Exercise 1}
+\begin{enumerate}[label = (\roman*)]
+    \item Suppose $A \in \mathcal{B}(G)$. Let $g \in G$. Since $l_g$ is a homeomorphism and $\mathcal{B}(G)$ is fully specified by the topology on $G$, $l_g(A) \in \mathcal{B}(l_g(G))$. But $l_g(G) = G$ as topological spaces, so $\mathcal{B}(l_g(G)) = \mathcal{B}(G)$. The reasoning for $r_g$ is the same.
+    
+    \item Let $A \in \mathcal{B}(G)$ and $g \in G$. Then
+    \begin{equation*}
+        \mu_g(l_g(A)) = \mu(r_{g^{-1}}(l_g(A))) = \mu(l_g(r_{g^{-1}}(A))) = \mu(r_{g^{-1}}(A)) = \mu_g(A),
+    \end{equation*}
+    so $\mu_g$ is left-invariant. In the second equality we used that $l_g(r_{g^{-1}}(x)) = gxg^{-1} = r_{g^{-1}}(l_g(x))$ for all $x \in G$, and in the third equality we used the left invariance of $\mu$. Since $\mu$ is a left-invariant Haar measure on $G$, by Corollary 19.7 (van de Ban), $\mu_g = \Delta(g) \mu$ for some constant $\Delta(g) \in \bb{R}_{\geq 0}$ which may depend on $g$. However, $\Delta(g) \neq 0$, since $\mu_g(U) = \mu(r_{g^{-1}}(U)) > 0$ for any nonempty open $U \subset G$, as $r_{g^{-1}}(U)$ is still nonempty and open because $r_{g^{-1}}$ is a homeomorphism.
 
+    \item Let $A \in \mathcal{B}(G)$ such that $\mu(A) > 0$, and let $g,h \in G$. Note that $\mu(r_{x^{-1}}(A)) = \mu_x(A) = \Delta(x)\mu(A)$ for any $x \in G$. Therefore,
+    \begin{align*}
+        \Delta(gh)\mu(A) = \mu(r_{(gh)^{-1}}(A)) = \mu(r_{g^{-1}}(r_{h^{-1}}(A))) = \Delta(g)\mu(r_{h^{-1}}(A)) = \Delta(g)\Delta(h)\mu(A).
+    \end{align*}
+    Since $\mu(A) > 0$, $\Delta(gh) = \Delta(g)\Delta(h)$. But $g, h \in G$ were arbitrary, so $\Delta : G \to \bb{R}_{>0}$ is a group homomorphism.
+
+    \item Let $K$ be a compact subgroup of $G$. By (iii), it suffices to show that $\Delta(K)$ is bounded, since $\{1\}$ is the only bounded subgroup of $\bb{R}_{>0}$. Suppose, for the sake of contradiction, that $\Delta(K)$ is unbounded. Then there exists a sequence $(g_n)_n$ in $K$ such that $\Delta(g_n) \to \infty$ as $n \to \infty$. Since $K$ is a subgroup, $K{g_n}^{-1} = K$ for every $n$. Therefore,
+    \begin{equation*}
+        \mu(K) = \mu(K{g_n}^{-1}) = \Delta(g_n)\mu(K) \to \infty \quad \text{as } n \to \infty,
+    \end{equation*}
+    but $\mu(K)$ does not depend on $n$, so $\mu(K) = \infty$. This contradicts the given property that the $\mu$-measure of every compact subset of $G$ is finite.
+\end{enumerate}
 
 \section*{Week 9, Exercise 3}
 \begin{enumerate}[label=(\roman*)]

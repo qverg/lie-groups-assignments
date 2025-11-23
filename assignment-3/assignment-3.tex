@@ -51,15 +51,15 @@
     \begin{equation*}
         \mu_g(l_g(A)) = \mu(r_{g^{-1}}(l_g(A))) = \mu(l_g(r_{g^{-1}}(A))) = \mu(r_{g^{-1}}(A)) = \mu_g(A),
     \end{equation*}
-    so $\mu_g$ is left-invariant. In the second equality we used that $l_g(r_{g^{-1}}(x)) = gxg^{-1} = r_{g^{-1}}(l_g(x))$ for all $x \in G$, and in the third equality we used the left invariance of $\mu$. Since $\mu$ is a left-invariant Haar measure on $G$, by Corollary 19.7 (van de Ban), $\mu_g = \Delta(g) \mu$ for some constant $\Delta(g) \in \bb{R}_{\geq 0}$ which may depend on $g$. However, $\Delta(g) \neq 0$, since $\mu_g(U) = \mu(r_{g^{-1}}(U)) > 0$ for any nonempty open $U \subset G$, as $r_{g^{-1}}(U)$ is still nonempty and open because $r_{g^{-1}}$ is a homeomorphism.
+    so $\mu_g$ is left-invariant. In the second equality we used that $l_g(r_{g^{-1}}(x)) = gxg^{-1} = r_{g^{-1}}(l_g(x))$ for all $x \in G$, and in the third equality we used the left invariance of $\mu$. Since $\mu_g$ is a left-invariant Haar measure on $G$, by Corollary 19.7 (van de Ban), $\mu_g = \Delta(g) \mu$ for some $\Delta(g) \in \bb{R}_{\geq 0}$ which may depend on $g$. However, $\Delta(g) \neq 0$, since $\mu_g(U) = \mu(r_{g^{-1}}(U)) > 0$ for any nonempty open $U \subset G$, as $r_{g^{-1}}(U)$ is still nonempty and open because $r_{g^{-1}}$ is a homeomorphism.
 
-    \item Let $A \in \mathcal{B}(G)$ such that $\mu(A) > 0$, and let $g,h \in G$. Note that $\mu(r_{x^{-1}}(A)) = \mu_x(A) = \Delta(x)\mu(A)$ for any $x \in G$. Therefore,
+    \item Let $g,h \in G$. By (ii), we have that $\mu(r_{x^{-1}}(G)) = \mu_x(G) = \Delta(x)\mu(G)$ for any $x \in G$. Therefore,
     \begin{align*}
-        \Delta(gh)\mu(A) = \mu(r_{(gh)^{-1}}(A)) = \mu(r_{g^{-1}}(r_{h^{-1}}(A))) = \Delta(g)\mu(r_{h^{-1}}(A)) = \Delta(g)\Delta(h)\mu(A).
+        \Delta(gh)\mu(G) = \mu(r_{(gh)^{-1}}(G)) = \mu(r_{g^{-1}}(r_{h^{-1}}(G))) = \Delta(g)\mu(r_{h^{-1}}(G)) = \Delta(g)\Delta(h)\mu(G).
     \end{align*}
-    Since $\mu(A) > 0$, $\Delta(gh) = \Delta(g)\Delta(h)$. But $g, h \in G$ were arbitrary, so $\Delta : G \to \bb{R}_{>0}$ is a group homomorphism.
+    Since $\mu(G) > 0$ ($G$ is open and nonempty in $G$), $\Delta(gh) = \Delta(g)\Delta(h)$. But $g, h \in G$ were arbitrary, so $\Delta : G \to \bb{R}_{>0}$ is a group homomorphism.
 
-    \item Let $K$ be a compact subgroup of $G$. By (iii), it suffices to show that $\Delta(K)$ is bounded, since $\{1\}$ is the only bounded subgroup of $\bb{R}_{>0}$. Suppose, for the sake of contradiction, that $\Delta(K)$ is unbounded. Then there exists a sequence $(g_n)_n$ in $K$ such that $\Delta(g_n) \to \infty$ as $n \to \infty$. Since $K$ is a subgroup, $K{g_n}^{-1} = K$ for every $n$. Therefore,
+    \item Let $K$ be a compact subgroup of $G$. By (iii), it suffices to show that $\Delta(K)$ is bounded, since the image of a subgroup under a group homomorphism is a subgroup, and $\{1\}$ is the only bounded subgroup of $\bb{R}_{>0}$. Suppose, for the sake of contradiction, that $\Delta(K)$ is unbounded. Then there exists a sequence $(g_n)_n$ in $K$ such that $\Delta(g_n) \to \infty$ as $n \to \infty$. But $K$ is a group, so $K{g_n}^{-1} = K$ for every $n$. Therefore,
     \begin{equation*}
         \mu(K) = \mu(K{g_n}^{-1}) = \Delta(g_n)\mu(K) \to \infty \quad \text{as } n \to \infty,
     \end{equation*}
@@ -68,7 +68,7 @@
 
 \section*{Week 9, Exercise 3}
 \begin{enumerate}[label=(\roman*)]
-    \item We assume $C(G)$ is equipped with the supremum norm $\lVert \, \cdot \, \rVert_\infty$. For any $g \in G$, the map $L_g : V \to V$ is linear. Since $V$ is a finite-dimensional normed space, $L_g$ is continuous. Now fix $\eps$ and select $(h, \psi) \in G \times V$. We want to show that there exists an open neighbourhood of $(h, \psi)$ such that $\lVert L_g(\phi) - L_h(\psi) \rVert_\infty < \eps$ for all $(g, \phi)$ in that neighbourhood.
+    \item We take $C(G)$ to be equipped with the supremum norm $\lVert \, \cdot \, \rVert_\infty$. For any $g \in G$, the map $L_g : V \to V$ is linear. Since $V$ is a finite-dimensional normed space, $L_g$ is continuous for any $g \in G$. Now fix $\eps >0$ and select $(h, \psi) \in G \times V$. We want to show that there exists an open neighbourhood of $(h, \psi)$ such that $\lVert L(g, \phi) - L(h,\psi) \rVert_\infty < \eps$ for all $(g, \phi)$ in that neighbourhood, which would imply that $L : G \times V \to V$ is continuous at $(h,\psi)$.
 
     Let $B(\psi, \eps/2) \subset V$ be the open ball around $\psi$ with radius $\eps/2$ with respect to the supremum norm. Let $A = L_h^{-1}(B(\psi, \eps/2))$, which is open since $L_h$ is continuous. Then, for all $\phi \in A$, and for any $g \in G$,
     \begin{align*}
@@ -77,14 +77,14 @@
         &= \lVert L_h(\phi) - L_h(\psi) \rVert_\infty \\
         &< \eps/2,
     \end{align*}
-    where we used that the left multiplications $\ell_g$ and $\ell_{h^{-1}}$ are bijections. Furthermore, for any $g \in G$,
+    where we used that $\{g^{-1}x \mid x \in G\} = G = \{h^{-1}x \mid x \in G\}$ since the left multiplications $\ell_{g^{-1}}$ and $\ell_{h^{-1}}$ are bijections. Simiarly, for any $g \in G$,
     \begin{equation*}
         \lVert L_g(\psi) - L_h(\psi) \rVert_\infty = \sup_{x \in G} \lvert \psi(g^{-1}x) - \psi(h^{-1}x) \rvert = \sup_{x \in G} \lvert \psi(g^{-1}hx) - \psi(x) \rvert.
     \end{equation*}
     %Since the domain of $\psi$, namely $G$, is compact, and $\psi$ is continuous, we can apply uniform continuity on topological groups (similarly to the proof of Proposition 20.10): there exists an open neighbourhood $U \subset G$ of $e$ such that $\lvert \psi(y^{-1}x) - \psi(x) \rvert < \eps/3$ for all $x, y \in U$. Therefore, $\lVert L_g(\psi) - L_h(\psi) \rVert_\infty < \eps/2$ for all $g \in hU$.
-    By (ii) (which we can use since it does not depend on the result we are proving here), there is a neighbourhood $U$ of $e \in G$ such that the latter expression is less than $\eps/2$ for all $g \in hV$, where $V$ is the open set $\{x \in G \mid x^{-1} \in U\}$. (It is open since $x \mapsto x^{-1}$ is a homeomorphism of the topological group $G$.)
+    By (ii) (which we can use since it does not depend on the result we are proving here), there is a neighbourhood $U$ of $e \in G$ such that the latter expression is less than $\eps/2$ for all $g \in hW$, where $W$ is the open set $\{x \in G \mid x^{-1} \in U\}$. (It is open since $x \mapsto x^{-1}$ is a homeomorphism of the topological group $G$.)
 
-    Now $hV \times A$ is an open neighbourhood of $(h, \psi)$ such that, for all $(g, \phi) \in hV \times A$,
+    Now $hW \times A$ is an open neighbourhood of $(h, \psi)$ such that, for all $(g, \phi) \in hW \times A$,
     \begin{equation*}
         \lVert L_g(\phi) - L_h(\psi) \rVert_\infty \leq \lVert L_g(\phi) - L_g(\psi) \rVert_\infty + \lVert L_g(\psi) - L_h(\psi) \rVert_\infty < \eps.
     \end{equation*}
@@ -92,7 +92,7 @@
 
     \item We will use the following Lemma.
     \begin{lemma} \label{lemma1}
-        Let $G$ be a topological group. For any open neighbourhood $E \subset G$ of $e$, there exists an open neighbourhood $A$ of $e$ contained in $E$ such that $AA^{-1} \subset E$.
+        Let $G$ be a topological group. For any open neighbourhood $E \subset G$ of $e$, there exists an open neighbourhood $A$ of $e$ contained in $E$ such that $AA^{-1} \subset E$.\footnote{Here, $AA^{-1}$ means $\{xy^{-1} \mid x, y \in A\}$.}
     \end{lemma}
     \begin{proof}
         The map
@@ -106,7 +106,9 @@
         is open, and nonempty since it contains $e$. Now for all $x, y \in A$, $xy^{-1} = \varphi(x, y) \in E$, so $e \in AA^{-1} \subset E$.
     \end{proof}
 
-    Let $E_g = f^{-1}(B(f(g), \eps/2)) \, g^{-1}$ for every $g \in G$, where $B(f(g), \eps/2) \subset \bb{R}$ is the open interval centered at $f(g)$ with width $\eps$. For every $g \in G$, $e \in E_g$, so by Lemma \ref{lemma1} there is an open neighbourhood $A_g$ of $e$ contained in $E_g$ such that $A_gA_g^{-1} \subset E$. Let $B_g = A_g \cap A_g^{-1}$ for every $g \in G$. Then $g \in B_g g$ since $e \in B_g$, so $\{B_g g\}_{g \in G}$ is an open cover of $G$. Since $G$ is compact, there is a finite subcover $B_{g_1} g_1, \ldots, B_{g_r} g_r$. Let $U = B_{g_1} \cap \cdots \cap B_{g_r}$, an open neighbourhood of $e$.
+    Now we prove the exercise.
+    
+    Let $E_g = f^{-1}(B(f(g), \eps/2)) \, g^{-1}$ for every $g \in G$, where $B(f(g), \eps/2) \subset \bb{R}$ is the open interval centered at $f(g)$ with width $\eps$. For every $g \in G$, $e \in E_g$, so by Lemma \ref{lemma1} there is an open neighbourhood $A_g$ of $e$ contained in $E_g$ such that $A_gA_g^{-1} \subset E$. Let $B_g = A_g \cap A_g^{-1}$ for every $g \in G$. Then, for every $g \in G$, we have $g \in B_g g$ since $e \in B_g$, so $\{B_g g\}_{g \in G}$ is an open cover of $G$. Since $G$ is compact, there is a finite subcover $B_{g_1} g_1, \ldots, B_{g_r} g_r$. Let $U = B_{g_1} \cap \cdots \cap B_{g_r}$, which is an open neighbourhood of $e$.
 
     Now pick $u \in U$ and $g \in G$. There is an $i \in \{1, \ldots, r\}$ for which $g \in B_{g_i} g_i$. But $B_{g_i} \subset A_{g_i} \subset E_{g_i}$, so $g \in E_{g_i} g_i$. Moreover, $ug \in B_i B_i g_i \subset A_{g_i} A_{g_i}^{-1} g_i \subset E_{g_i} g_i$. Therefore,
     \begin{equation*}
@@ -121,15 +123,15 @@
 
     Now we could proceed as in (i), since the second part of that proof does not depend on the finite dimensionality of the function space. However, here I will assume $G$ is a Lie group, so we can use Proposition 20.8 from van de Ban's lecture notes.
     
-    Fix $f \in C(G)$ and select $\eps >0$. By part (ii), there exists a neighbourhood $V$ of $e \in G$ such that
+    Fix $f \in C(G)$ and select $\eps >0$. By part (ii), there exists a neighbourhood $W$ of $e \in G$ such that
     \begin{equation*}
         \lvert L_g(f)(x) - L_e(f)(x) \rvert = \lvert f(g^{-1}x) - f(x) \rvert < \eps
     \end{equation*}
-    for all $x \in G$, $g \in V$. Indeed, we can take $V= U^{-1}$, where $U$ is the neighbourhood of $e$ as in (ii). The set $V$ is open since $V = \iota^{-1}(U)$ where $\iota$ is the inverse operation on $G$, which is continuous, and $e \in V$ since $e^{-1} = e$. It follows that,
+    for all $x \in G$, $g \in W$. Indeed, we can take $W= U^{-1}$, where $U$ is the neighbourhood of $e$ as in (ii). The set $W$ is open since $W = \iota^{-1}(U)$ where $\iota$ is the inverse operation on $G$, which is continuous, and $e \in W$ since $e^{-1} = e$. It follows that
     \begin{equation*}
         \lVert L_g(f)- L_e(f) \rVert_\infty = \sup_{x \in G} \lvert L_g(f)(x) - L_e(f)(x) \rvert \leq \eps
     \end{equation*}
-    for all $g \in V$. Since $\eps>0$ was arbitrary, we have found that $g \mapsto L_g(f)$ is continuous at $e$.  By Proposition 20.8, $L : G \times C(G) \to C(G)$ is continuous, so the representation $L$ of $G$ on $C(G)$ is continuous.    
+    for all $g \in W$. Since $\eps>0$ was arbitrary, we have found that $g \mapsto L_g(f)$ is continuous at $e$.  By Proposition 20.8, $L : G \times C(G) \to C(G)$ is continuous, so the representation $L$ of $G$ on $C(G)$ is continuous.    
 \end{enumerate}
 
 \section*{Week 10, Exercise 3}
@@ -138,7 +140,7 @@
     \begin{equation*}
         \pi(g)\pi(h)v = \pi(g, \pi(h, v)) = \pi(gh, v) = \pi(hg, v) = \pi(h, \pi(g, v)) = \pi(h)\pi(g)(v).
     \end{equation*}
-    In the first and last equality we used the definition of $\pi$; in the second and fourth equality we used that $\pi$ is a group action; and in the third equality we used that $G$ is commutative. It follows that $\pi(g) : V \to V$ is an equivariant map. Then, by Shur's lemma, $\pi(g) = \lambda_g I_V$ for some $\lambda_g \in \bb{C}$. Therefore $\pi(g)$ leaves every subspace of $V$ invariant. This holds for every $g \in G$. Hence, if $\pi$ is irreducible, then $\dim V = 1$, since in that case the only linear subspaces of $V$ are $\{0\}$ and $V$ itself. Conversely, if $\dim V = 1$, then the only linear subspaces of $V$ are $\{0\}$ and $V$ itself, so $\pi$ is trivially irreducible.
+    In the first and last equality we used the definition of $\pi$; in the second and fourth equality we used that $\pi$ is a group action; and in the third equality we used that $G$ is commutative. It follows that $\pi(g) : V \to V$ is an equivariant map. Then, by Schur's lemma, $\pi(g) = \lambda_g I_V$ for some $\lambda_g \in \bb{C}$. But this means that $\pi(g)$ leaves every subspace of $V$ invariant. This holds for every $g \in G$. Hence, if $\pi$ is irreducible, then $\dim V = 1$, since in that case the only linear subspaces of $V$ are $\{0\}$ and $V$ itself. Conversely, if $\dim V = 1$, then the only linear subspaces of $V$ are $\{0\}$ and $V$ itself, so $\pi$ is trivially irreducible.
 
     \item This is an immediate consequence of (i) and Corollary 20.19 (van de Ban). From the proofs of Corollary 20.19 and Lemma 20.18 it is clear that the subspaces are mutually orthogonal.
     
@@ -148,16 +150,29 @@
         \cos \theta & -\sin \theta \\ \sin \theta & \cos\theta
         \end{pmatrix},
     \end{equation*}
-    for some $\theta \in [0, 2\pi)$, which is a unitary matrix. Furthermore, the representation is finite-dimensional since $\bb{C}^2$. Lastly, $\mathrm{SO}(2)$ is commutative, since it is isomorphic to the clearly commutative group $S^1$.
-    Therefore, we can use (i): $\dim \bb{C} > 1$, so the representation is not irreducible.
+    for some $\theta \in [0, 2\pi)$, which is a unitary matrix. Furthermore, the representation is finite-dimensional since $\bb{C}^2$. Lastly, $\mathrm{SO}(2)$ is commutative, since% it is isomorphic to the clearly commutative group $S^1$.
+    \begin{equation*}
+        \begin{pmatrix}
+        \cos \theta & -\sin \theta \\ \sin \theta & \cos\theta
+        \end{pmatrix}
+        \begin{pmatrix}
+        \cos \phi & -\sin \phi \\ \sin \phi & \cos\phi
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+        \cos \theta \cos\phi - \sin\theta\sin\phi & -\cos\theta\sin \phi - \sin\theta\cos\phi \\ \sin \theta\cos\phi + \cos\theta\sin\phi & -\sin\theta\sin\phi + \cos\theta\cos\phi
+        \end{pmatrix}
+    \end{equation*}
+    is symmetric in $\theta$ and $\phi$.
+    Therefore, we can use (i): $\dim \bb{C}^2 > 1$, so the representation is not irreducible.
 
-    \item Suppose that there is an invariant subspace $W \subsetneq V$ and $W \neq \{0\}$. Let $w \in W$. Then, for every $g \in \mathrm{SO}(2)$, there exists a $\lambda_g \in \bb{R}$ such that $gw = \lambda_g w$, since $W$ must be one-dimensional. In other words, $w$ is a joint eigenvector of all elements of $\mathrm{SO}(2)$, always with a real eigenvalue. In particular, there exists such a $\lambda_g$ for the element $g \in \mathrm{SO}(2)$ represented by
+    \item Suppose that there is an invariant subspace $W \subsetneq \bb{R}^2$ and $W \neq \{0\}$ (in terms of vector spaces over $\bb{R}$). Let $w \in W$. Then, for every $g \in \mathrm{SO}(2)$, there exists a $\lambda_g \in \bb{R}$ such that $gw = \lambda_g w$, since $W$ must be one-dimensional. In other words, $w$ is a joint eigenvector of all elements of $\mathrm{SO}(2)$, always with a real eigenvalue. In particular, there exists such a $\lambda_g$ for the element $g \in \mathrm{SO}(2)$ represented by
     \begin{equation*}
         \begin{pmatrix}
             0 & -1 \\ 1 & 0
         \end{pmatrix}.
     \end{equation*}
-    However, the eigenvalues of this matrixare $i$ and $-i$, neither of which are real. This is a contradiction, so it follows that such a subspacee $W$ cannot exist. In other words, the only invariant subspaces of $\bb{R}^2$ are $\{0\}$ and $\bb{R}^2$ itself, so the representation is irreducible.
+    However, the eigenvalues of this matrix are $i$ and $-i$, neither of which are real. This is a contradiction, so it follows that such a subspace $W$ cannot exist. In other words, the only invariant subspaces of $\bb{R}^2$ are $\{0\}$ and $\bb{R}^2$ itself, so the representation is irreducible.
 \end{enumerate}
 
 % \section*{Week 10, Exercise 4}

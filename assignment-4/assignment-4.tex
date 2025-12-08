@@ -1,0 +1,135 @@
+\documentclass{article}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\usepackage{microtype}
+\usepackage{enumitem}
+
+% macro for bra kets
+\usepackage{mathtools}
+\DeclarePairedDelimiter\bra{\langle}{\rvert}
+\DeclarePairedDelimiter\ket{\lvert}{\rangle}
+\DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1\,\delimsize\vert\,\mathopen{}#2}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\eps}{\varepsilon}
+\renewcommand{\Im}{\mathrm{Im}}
+\renewcommand{\Re}{\mathrm{Re}}
+\newcommand{\Hom}{\mathrm{Hom}}
+
+\newcommand{\bb}{\mathbb}
+
+\newcommand{\SL}{\mathrm{SL}}
+\DeclareMathOperator{\diag}{\mathrm{diag}}
+\renewcommand{\d}{\mathrm{d}}
+
+\theoremstyle{remark}
+\newtheorem{questionpart}{}
+\renewcommand*{\thequestionpart}{\textbf{(\alph{questionpart})}}
+
+\title{Lie Groups -- Assignment 4}
+\author{Quinten Vergeylen}
+\date{}
+
+\begin{document}
+\maketitle
+
+\setstretch{1.1}
+
+\section*{Week 11, exercise 1}
+
+\begin{enumerate}[label=(\roman*)]
+    \item Let $\phi$ be the given map. First we show that $\phi$ is well-defined. Let $T \in \Hom_G(V \oplus V', W)$. We need to show that $T\vert_V : V \to W$ and $T\vert_{V'} : V' \to W$ are linear maps that intertwine the representations. The maps $T\vert_{V}$ and $T\vert_{V'}$ are linear since they are both restrictions of a linear map to a linear subspace. Let $i_V : V \to V \oplus V' : v \mapsto (v, 0)$ be the inclusion and fix $x \in G$. Then we can identify $T\vert_V = T \circ i_V$, so
+    \begin{equation*}
+        T\vert_V \pi(x)v = T(i_V(\pi(x)v)) = T(\pi(x)v, 0).
+    \end{equation*}
+    Now we can use the linearity of $\pi'(x)$ to write
+    \begin{equation*}
+        T(\pi(x)v, 0) = T(\pi(x)v, \pi'(x) 0) = T(\pi \oplus \pi')(x)(v,0) = \rho(x) T(v, 0).
+    \end{equation*}
+    In the last equality we used the intertwining property of $T$. But
+    \begin{equation*}
+        T(v, 0) = (T \circ i_V)(v) = T\vert_V v,
+    \end{equation*}
+    so $T\vert_V \pi(x) = \rho(x) T\vert_V$, which means that $T\vert_V$ is intertwining. A similar argument shows that $T\vert_{V'}$ is also intertwining. Therefore, $\phi$ is well-defined.
+    
+    Now we show that $\phi$ is linear. Let $T, S \in \Hom_G(V \oplus V', W)$ and $a, b \in \bb{C}$. Then, for all $v \in V$ and $v' \in V$,
+    \begin{align*}
+        \phi(aT + bS)(v, v') &= (a T + bS)\vert_V \oplus (aT+bS)\vert_{V'}(v,v') \\
+        &= (a T\vert_V + bS\vert_V) \oplus (aT\vert_{V'}+bS\vert_{V'})(v,v') \\
+        &= (aT\vert_Vv + bS\vert_Vv, \, aT\vert_{V'}v' + bS\vert_{V'}v') \\
+        &= a (T\vert_Vv, \, T\vert_{V'}v') + b (S\vert_Vv, \, S\vert_{V'}v') \\
+        &= a (T\vert_V \oplus T\vert_{V'})(v, v') + b (S\vert_V \oplus S\vert_{V'})(v, v') \\
+        &= (a\phi(T) + b\phi(S))(v, v').
+    \end{align*}
+    Hence $\phi$ is linear.
+    
+    Next, we show that $\phi$ is injective. Let $T \in \Hom_G(V \oplus V', W)$ and suppose $\phi(T) = 0$. Then $T\vert_V = 0$ and $T\vert_{V'} = 0$. Therefore, for all $(v,v') \in V \oplus V'$,
+    \begin{equation*}
+        T(v, v') = T(v, 0) + T(0, v') = T\vert_V v + T\vert_{V'}v'= 0
+    \end{equation*}
+    and thus $T = 0$. By the linearity of $\phi$, it follows that $\phi$ is injective.
+    
+    Lastly, we show that $\phi$ is surjective. It suffices to check that if $A \in \Hom_G(V, W)$ and $B \in \Hom_G(V',W)$, then the map
+    \begin{equation*}
+        T : V \oplus V' \to W : (v, v') \mapsto Av + Bv'
+    \end{equation*}
+    lies in $\Hom_G(V\oplus V', W)$, since $T\vert_V = A$ and $T|\vert_{V'} = B$. First we show that $T$ is linear: for all $a, b \in \bb{C}$, $(v,v'), (w,w') \in V \oplus V'$, we have
+    \begin{equation*}
+        T(a(v,v') + b(w,w')) = T(av + bw, av' + bw') = A(av + bw) + B(av' + bw').
+    \end{equation*}
+    Using the linearity of $A$ and $B$, this becomes
+    \begin{equation*}
+        aAv + bAw + aBv' + bBw' = aT(v,v') + bT(w,w').
+    \end{equation*}
+    hence $T$ is linear. We only need to show that $T$ intertwines the representations. Let $x \in G$ and $(v,v') \in V\oplus V'$. Then
+    \begin{equation*}
+        T(\pi \oplus \pi')(x)(v,v') = T(\pi(x)v, \pi'(x)v') = A\pi(x)v + B\pi'(x)v'.
+    \end{equation*}
+    Using the intertwining property of $A$ and $B$, this becomes
+    \begin{equation*}
+        \rho(x)Av + \rho(x)Bv' = \rho(x)T(v,v'),
+    \end{equation*}
+    so $T$ is intertwining. This concludes the proof that $\phi$ is a linear bijection.
+
+    \item Suppose
+    \begin{equation*}
+        (\pi, V) = (\pi_1 \oplus \cdots \oplus \pi_r, V_1 \oplus \cdots V_r) \quad \text{and} \quad (\rho, W) = (\rho_1 \oplus \cdots \oplus \rho_s, W_1 \oplus \cdots \oplus W_s)
+    \end{equation*}
+    are decompositions of $(\pi, V)$ and $(\rho, W)$ into irreducible representations $(\pi_j, V_j)$ and $(\rho_i, W_i)$, for $j \in \{1, \ldots, r\}$ and $i \in \{1, \ldots, s\}$. These exist by Corollary 20.19 (van de Ban), where $\pi$ and $\rho$ are unitarisable since $G$ is assumed compact.
+
+    Let $p_i : W \to W_i : (w_1, \ldots, w_s) \mapsto w_i$ be the projection for each $i$. Fix $j \in \{1, \ldots, r\}$. Clearly, the map
+    \begin{equation*}
+        \psi : \Hom_G(V_j, W_1 \oplus \cdots \oplus W_s) \cong \Hom_G(V_j, W) \to \bigoplus_{i=1}^s \Hom_G(V_j, W_i) : T \mapsto \bigoplus_{i=1}^s (p_i \circ T)
+    \end{equation*}
+    is a linear isomorphism. It is well-defined since, for every $i \in \{1, \ldots, s\}$, $x \in G$ and $v \in V_j$, we have
+    \begin{equation*}
+        (p_i \circ T) \pi_j(x) v = p_i(T\pi_j(x)v) = p_i(\rho(x)Tv) = \rho_i(x) (p_i \circ T)(v).
+    \end{equation*}
+    It follows that
+    \begin{equation*}
+        \dim_\bb{C} \Hom_G(V_j, W_1 \oplus \cdots \oplus W_s) = \sum_{i=1}^{s} \dim_\bb{C} \Hom_G(V_j, W_i).
+    \end{equation*}
+
+    By combining this equation with part (i), we have
+    \begin{equation*}
+        \dim_\bb{C} \Hom_G(V, W) = \sum_{i=1}^{s} \sum_{j=1}^{r} \dim_\bb{C} \Hom_G(V_j, W_i).
+    \end{equation*}
+    Meanwhile, Lemma 22.7 says that
+    \begin{equation*}
+        \langle \chi_\pi, \chi_\rho \rangle = \sum_{i=1}^{s} \sum_{j=1}^{r} \langle \chi_{\pi_j}, \chi_{\rho_i} \rangle.
+    \end{equation*}
+    It therefore suffices to show that $\langle \chi_{\pi_j}, \chi_{\rho_i} \rangle = \dim_\bb{C} \Hom_G(V_j, W_i)$ for all $j$ and $i$.
+
+    By Lemma 22.10, $\langle \chi_{\pi_j}, \chi_{\rho_i} \rangle = 1$ if $\pi_j \sim \rho_i$ and $\langle \chi_{\pi_j}, \chi_{\rho_i} \rangle = 0$ if $\pi_j \not\sim \rho_i$. Suppose $\pi_j \sim \rho_i$. Then in particular we can identify $V_j$ and $W_i$ as linear spaces, so $\Hom_G(V_j, W_i) \cong \mathrm{End}_G(V_j)$. But the latter is one-dimensional by Schur's lemma, so $\dim_\bb{C} \Hom_G(V_j, W_i) = 1 = \langle \chi_{\pi_j}, \chi_{\rho_i} \rangle$. If $\pi_j \not\sim \rho_i$, then every intertwiner $V_j \to W_i$ is trivial (Lemma 20.30), so $\dim_\bb{C} \Hom_G(V_j, W_i) = 0 = \langle \chi_{\pi_j}, \chi_{\rho_i} \rangle$. This completes the proof.
+\end{enumerate}
+
+\end{document}

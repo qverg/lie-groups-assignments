@@ -132,4 +132,30 @@
     By Lemma 22.10, $\langle \chi_{\pi_j}, \chi_{\rho_i} \rangle = 1$ if $\pi_j \sim \rho_i$ and $\langle \chi_{\pi_j}, \chi_{\rho_i} \rangle = 0$ if $\pi_j \not\sim \rho_i$. Suppose $\pi_j \sim \rho_i$. Then in particular we can identify $V_j$ and $W_i$ as linear spaces, so $\Hom_G(V_j, W_i) \cong \mathrm{End}_G(V_j)$. But the latter is one-dimensional by Schur's lemma, so $\dim_\bb{C} \Hom_G(V_j, W_i) = 1 = \langle \chi_{\pi_j}, \chi_{\rho_i} \rangle$. If $\pi_j \not\sim \rho_i$, then every intertwiner $V_j \to W_i$ is trivial (Lemma 20.30), so $\dim_\bb{C} \Hom_G(V_j, W_i) = 0 = \langle \chi_{\pi_j}, \chi_{\rho_i} \rangle$. This completes the proof.
 \end{enumerate}
 
+\section*{Week 12, exercise 1}
+\begin{enumerate}[label=(\roman*)]
+    \item I will use the content of Section 26 in van de Ban's notes. Since $G$ is finite, there are finitely many conjugacy classes, say $C_1, \ldots, C_r$. For each $j \in \{1, \ldots, r\}$, define
+    \begin{equation*}
+        f_j : G \to \bb{C} : x \mapsto \begin{cases}
+            1 & \text{if $x \in C_j$,} \\
+            0 & \text{otherwise.}
+        \end{cases}
+    \end{equation*}
+    Then $f_1, \ldots, f_r$ clearly form a basis for $L^2(G, \text{class})$, the space of square integrable class functions on $G$. In other words, $\dim L^2(G, \text{class}) = r$. But by Lemma 26.1, $\dim L^2(G, \text{class}) = \#\hat{G}$. Therefore, $\hat{G}$ is finite.
+
+    \item By Lemma 22.11, we can identify $\pi$ with
+    \begin{equation*}
+        \bigoplus_{\delta \in \hat{G}} m(\delta, \pi) \delta.
+    \end{equation*}
+    For every $\delta \in \hat{G}$, let $V_\delta$ be its representation space. Then we can identify $V_\pi$ with
+    \begin{equation*}
+        \bigoplus_{\delta \in \hat{G}} V_\delta.
+    \end{equation*}
+    For every $\delta \in \hat{G}$, let $p_\delta : V_\pi \to V_\delta$ be the projection according to this decomposition. Now we have
+    \begin{equation*}
+        \langle \pi(g) v_1, v_2 \rangle = \langle \left( \bigoplus_{\delta \in \hat{G}} m(\delta, \pi) \delta(g) \right) v_1, v_2 \rangle = \sum_{\delta \in \hat{G}} \langle m(\delta, \pi) \delta(g) p_\delta(v_1), p_\delta(v_2) \rangle
+    \end{equation*}
+    for all $g \in G$ \textcolor{red}{this doesn't seem right}
+\end{enumerate}
+
 \end{document}

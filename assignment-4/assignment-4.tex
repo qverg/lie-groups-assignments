@@ -143,19 +143,23 @@
     \end{equation*}
     Then $f_1, \ldots, f_r$ clearly form a basis for $L^2(G, \text{class})$, the space of square integrable class functions on $G$. In other words, $\dim L^2(G, \text{class}) = r$. But by Lemma 26.1, $\dim L^2(G, \text{class}) = \#\hat{G}$. Therefore, $\hat{G}$ is finite.
 
-    \item By Lemma 22.11, we can identify $\pi$ with
+    \item I will assume the inner product on $V_\pi$ is one which makes $\pi$ unitary, which exists by the compactness of $G$ (Proposition 20.17). By Lemma 22.11, we can identify $\pi$ with $\bigoplus_{\delta \in \hat{G}} m(\delta, \pi) \delta$.
+    For every $\delta \in \hat{G}$, let $V_\delta$ be its representation space. Then we can identify $V_\pi$ with $\bigoplus_{\delta \in \hat{G}} V_\delta$,
+    where the $V_\delta$ are orthogonal subspaces, according to Corollary 20.19 and Lemma 20.18. For every $\delta \in \hat{G}$, let $p_\delta : V_\pi \to V_\delta$ be the projection according to this decomposition. Now we have
     \begin{equation*}
-        \bigoplus_{\delta \in \hat{G}} m(\delta, \pi) \delta.
+        \langle \pi(g) v_1, v_2 \rangle = \langle ( \bigoplus_{\delta \in \hat{G}} m(\delta, \pi) \delta(g) ) v_1, v_2 \rangle = \sum_{\delta \in \hat{G}} m(\delta, \pi) \langle  \delta(g) p_\delta(v_1), p_\delta(v_2) \rangle_\delta
     \end{equation*}
-    For every $\delta \in \hat{G}$, let $V_\delta$ be its representation space. Then we can identify $V_\pi$ with
-    \begin{equation*}
-        \bigoplus_{\delta \in \hat{G}} V_\delta.
-    \end{equation*}
-    For every $\delta \in \hat{G}$, let $p_\delta : V_\pi \to V_\delta$ be the projection according to this decomposition. Now we have
-    \begin{equation*}
-        \langle \pi(g) v_1, v_2 \rangle = \langle \left( \bigoplus_{\delta \in \hat{G}} m(\delta, \pi) \delta(g) \right) v_1, v_2 \rangle = \sum_{\delta \in \hat{G}} \langle m(\delta, \pi) \delta(g) p_\delta(v_1), p_\delta(v_2) \rangle
-    \end{equation*}
-    for all $g \in G$ \textcolor{red}{this doesn't seem right}
+    for all $g \in G$ by the orthogonality of the irreducible spaces $V_\delta$, where $\langle \cdot, \cdot \rangle_\delta$ is the respective induced Hermitian inner product. But $g \mapsto \langle  \delta(g) p_\delta(v_1), p_\delta(v_2) \rangle_\delta$ belongs to $C(G)_\delta$ since it is a matrix coefficient of $\delta$. Therefore, $g \mapsto \langle \pi(g) v_1, v_2 \rangle$ belongs to $\mathcal{R}(G)$.
+
+    \item Let $\phi \in \mathcal{R}(G)$. Then there exists a $\phi_\delta \in C(G)_\delta$ for each $\delta \in \hat{G}$ such that $\phi = \sum_{\delta \in \hat{G}} \phi_\delta$. In turn, for each $\delta \in \hat{G}$, there exist matrix elements $m^\delta_1, \ldots, m^\delta_{n_\delta}$ of $\delta$ such that $\phi_\delta = \sum_{j=1}^{n_\delta} m^\delta_j$. Fix $\delta \in \hat{G}$ and $j \in \{1, \ldots, n_\delta\}$, and suppose that $v, w \in V_\delta$ are such that $m^\delta_j(g) = \langle \delta(g) v, w \rangle$ for all $g \in G$. Then, for all $x, g \in G$, we have $m^\delta_j(gx^{-1}) = \langle \delta(gx^{-1}) v, w \rangle = \langle \delta(g)\delta(x^{-1}) v, w \rangle$. Since $\delta(x^{-1})v \in V_\delta$, the map $g \mapsto m^\delta_j(gx^{-1})$ is a matrix element for all $x \in G$. Similarly, $g \mapsto m^\delta_j(xg)$ is a matrix element for all $x \in G$. It follows that $g \mapsto \phi_\delta(gx^{-1})$ and $g \mapsto \phi_\delta(xg)$ belong to $C(G)_\delta$ for all $x \in G$, and therefore $g \mapsto \phi(gx^{-1})$ and $g \mapsto \phi(xg)$ belong to $\mathcal{R}(G)$ for all $x \in G$.
+    
+    Now let $f \in \mathcal{R}(G)^\perp$. For any $\phi \in \mathcal{R}(G)$ and $x \in G$, we have
+    \begin{equation} \label{eq:Rxf-phi-product}
+        \langle R_x(f), \phi \rangle = |G|^{-1}\sum_{g \in G} f(gx) \overline{\phi(g)} = |G|^{-1}\sum_{g \in G} f(g) \overline{\phi(gx^{-1})}.
+    \end{equation}
+    We just showed that $\psi_x : G \to \bb{C} : g \mapsto \phi(gx^{-1})$ belongs to $\mathcal{R}(G)$, so \eqref{eq:Rxf-phi-product} becomes $\langle f, \psi_x \rangle = 0$. Since $\phi$ was arbitrary, $R_x(f) \in \mathcal{R}(G)^\perp$. But $x$ was also arbitrary, so $\mathcal{R}(G)^\perp$ is invariant for the right regular representation of $G$. Analogouosly, $\mathcal{R}(G)^\perp$ is invariant for the left regular representation of $G$.
+
+    \item 
 \end{enumerate}
 
 \end{document}

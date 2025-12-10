@@ -184,13 +184,13 @@
     \end{align*}
     Therefore, $\phi = \mathrm{id_G}$. Since $D$ is a group homomorphism, this implies that $D$ is injective.
 
-    \item Let $O \subset \mathfrak{g}$ be an open neighbourhood of $0$ such that $\exp : O \to \exp(O)$ is a diffeomorphism. Since $f_n(\exp X) = \exp(T_e f_n (X)) \to \exp(\psi(X))$ by the continuity of $\exp$, for all $X \in O$, the sequence $(f_n)_n$ converges pointwise on $\exp(O)$. Now fix $g \in G$, not necessarily in $\exp(O)$. Then there exist $X_1, \ldots, X_k \in \mathfrak{g}$ such that $g = \exp(X_1) \cdots \exp(X_k)$. Let $m \in \bb{N}$ be large enough that $X_j/m \in O$ for all $j \in \{1, \ldots, k\}$. Write $Y_j = X_j/m$ for all $j$. Then, by Proposition 2.9 (Koelink),
+    \item Let $O \subset \mathfrak{g}$ be an open neighbourhood of $0$ such that $\exp : O \to \exp(O)$ is a diffeomorphism. Since $f_n(\exp X) = \exp(T_e f_n (X)) \to \exp(\psi(X))$ by the continuity of $\exp$, for all $X \in O$, the sequence $(f_n)_n$ converges pointwise on $\exp(O)$. Now fix $g \in G$, not necessarily in $\exp(O)$. Then there exist $X_1, \ldots, X_k \in \mathfrak{g}$ such that $g = \exp(X_1) \cdots \exp(X_k)$. For all $j \in \{1, \ldots, k\}$, Let $m_j \in \bb{N}$ be large enough that $X_j/m_j \in O$. Write $Y_j = X_j/m_j$ for all $j$. Then, by Proposition 2.9 (Koelink),
     \begin{equation*}
-        g = \exp(mY_1) \cdots \exp(mY_k) = (\exp Y_1)^m \cdots (\exp Y_k)^m.
+        g = \exp(m_1Y_1) \cdots \exp(m_kY_k) = (\exp Y_1)^{m_1} \cdots (\exp Y_k)^{m_k}.
     \end{equation*}
     Now we see that
     \begin{equation} \label{eq:limit-of-fn}
-        f_n(g) = f_n(\exp Y_1)^m \cdots f_n(\exp Y_k)^m \to (\exp \psi(Y_1))^m \cdots (\exp \psi(Y_k))^m
+        f_n(g) = f_n(\exp Y_1)^{m_1} \cdots f_n(\exp Y_k)^{m_k} \to (\exp \psi(Y_1))^{m_1} \cdots (\exp \psi(Y_k))^{m_k}
     \end{equation}
     by the homomorphism property of $f$ and the continuity of $\exp$ and the group multiplication. Therefore, there exists a pointwise limit $f$ of $(f_n)_n$.
 
@@ -198,21 +198,21 @@
     \begin{equation*}
         f(gh) = \lim_{n \to \infty} f_n(gh) = \lim_{n \to \infty} f_n(g)f_n(h) = f(g)f(h)
     \end{equation*}
-    by the continuity of multiplication, so $f$ is a group homomorphism. Let $F : G \to G$ be the function that takes $g = (\exp Y_1)^m \cdots (\exp Y_k)^m$ to
+    by the continuity of multiplication, so $f$ is a group homomorphism. Let $F : G \to G$ be the function that takes $g = (\exp Y_1)^{m _1}\cdots (\exp Y_k)^{m_k}$ to
     \begin{equation*}
-        F(g) = (\exp (-\psi(Y_k)))^m \cdots (\exp (-\psi(Y_1)))^m.
+        F(g) = (\exp (-\psi(Y_k)))^{m_k} \cdots (\exp (-\psi(Y_1)))^{m_1}.
     \end{equation*}
     By Proposition 2.9, $f \circ F = F \circ f = \mathrm{id}_G$, so $f$ is bijective. Note that $F$ is well-defined: if
     \begin{equation*}
-        g = (\exp Y_1)^m \cdots (\exp Y_k)^m = (\exp Z_1)^p \cdots (\exp Z_l)^p
+        g = (\exp Y_1)^{m_1} \cdots (\exp Y_k)^{m_k} = (\exp Z_1)^{p_1} \cdots (\exp Z_l)^{p_l}
     \end{equation*}
-    for $Y_1, \ldots, Y_k, Z_1, \ldots, Z_l \in O$, and $m,p \in \bb{N}$, we know by the uniqueness of the limit \eqref{eq:limit-of-fn} that
+    for $Y_1, \ldots, Y_k, Z_1, \ldots, Z_l \in O$, and $m_1, \ldots, m_k, p_1, \ldots, p_l \in \bb{N}$, we know by the uniqueness of the limit \eqref{eq:limit-of-fn} that
     \begin{equation*}
-        (\exp \psi(Y_1))^m \cdots (\exp \psi(Y_k))^m = (\exp \psi(Z_1))^p \cdots (\exp \psi(Z_l))^p
+        (\exp \psi(Y_1))^{m_1} \cdots (\exp \psi(Y_k))^{m_k} = (\exp \psi(Z_1))^{p_1} \cdots (\exp \psi(Z_l))^{p_l}
     \end{equation*}
     and hence by taking the inverse,
     \begin{equation*}
-        (\exp (- \psi(Y_k)))^m \cdots (\exp (- \psi(Y_1)))^m = (\exp (-\psi(Z_l)))^p \cdots (\exp (-\psi(Z_1)))^p.
+        (\exp (- \psi(Y_k)))^{m_k} \cdots (\exp (- \psi(Y_1)))^{m_1} = (\exp (-\psi(Z_l)))^{p_l} \cdots (\exp (-\psi(Z_1)))^{p_1}.
     \end{equation*}
     
     % Next we show that $f$ is injective. Note first that
@@ -220,9 +220,22 @@
     % Suppose $f$ is not injective. Then there is a $g \in \ker f \setminus\{e\}$. In particular, since $f(g) = \lim_{n \to \infty} f_n(g) = e$, and 
     % there is an $n_0 \in \bb{N}$ such that $f_n(g) \in \exp(\psi(O))$ for all $n \geq n_0$.
     
-    \item \textcolor{red}{TO DO: $f$ continuous}
+    \item The map $\exp \circ \, \psi \circ \exp^{-1} : \exp(O) \to \exp(\psi(O))$, with $O \subset \mathfrak{g}$ the neighbourhood of 0 from (ii), is continuous at $e$ since $\exp$, $\psi$ and $\exp^{-1}$ are all continuous on the domains we are considering here. Now fix $g = (\exp Y_1)^{m _1}\cdots (\exp Y_k)^{m_k} \in G$. Then $l_g(\exp(O))$ is an open neighbourhood of $g$. For any $h \in l_g(\exp(O))$, we have
+    \begin{equation*}
+        h = gg^{-1}h = (\exp Y_1)^{m _1}\cdots (\exp Y_k)^{m_k} \exp((\exp^{-1} \circ \, l_{g^{-1}})(h)).
+    \end{equation*}
+    Note that $(\exp^{-1} \circ \, l_{g^{-1}})(h) \in O$. Using the construction in (ii), we find
+    \begin{align*}
+        f(h) &=  (\exp \psi(Y_1))^{m _1}\cdots (\exp \psi(Y_k))^{m_k} (\exp \circ \,\psi \circ \exp^{-1} \circ \, l_{g^{-1}})(h) \\
+        &= f(g) (\exp \circ \,\psi \circ \exp^{-1} \circ \, l_{g^{-1}})(h)
+    \end{align*}
+    This holds for all $h \in l_g(\exp(O))$, so
+    \begin{equation*}
+        f =  f(g) \cdot \exp \circ \,\psi \circ \exp^{-1} \circ \, l_{g^{-1}}
+    \end{equation*}
+    on $l_g(\exp(O))$. Since $l_{g^{-1}}(g) = e$ and $l_{g^{-1}}$ is continuous at $g$, the map $\exp \circ \,\psi \circ \exp^{-1} \circ \, l_{g^{-1}}$ is continuous at $g$. Group multiplication is also continuous, and therefore $f$ is continuous at $g$. This holds for any $g \in G$, so $f$ is continuous.
 
-    By Proposition 5.1 (Koelink), $f$ is smooth.
+    By Proposition 5.1 (Koelink), the continuity of $f$ implies that $f$ is smooth.
 
     \item Let $(\psi_n)_{n \in \bb{N}}$ be a sequence in $D(\Aut(G))$ that converges to $\psi \in \Aut(\mathfrak{g})$. Then, for every $n \in \bb{N}$, there exists an $f_n \in \Aut(G)$ such that $\psi_n = T_ef_n$. By (ii), there exists a group automorphism $f : G \to G$ for which $f(\exp(X)) = \exp(\psi(X))$ for all $X$ in a small enough open neighbourhood of $0 \in \mathfrak{g}$. Part (iii) says that $f$ is a Lie group automorphism, so $f \in \Aut(G)$. Furthermore, for $X \in \mathfrak{g}$,
     \begin{equation*}

@@ -83,7 +83,7 @@
     \begin{equation*}
         T : V \oplus V' \to W : (v, v') \mapsto Av + Bv'
     \end{equation*}
-    lies in $\Hom_G(V\oplus V', W)$, since $T\vert_V = A$ and $T|\vert_{V'} = B$. First we show that $T$ is linear: for all $a, b \in \bb{C}$, $(v,v'), (w,w') \in V \oplus V'$, we have
+    lies in $\Hom_G(V\oplus V', W)$, since $T\vert_V = A$ and $T\vert_{V'} = B$. First we show that $T$ is linear: for all $a, b \in \bb{C}$, $(v,v'), (w,w') \in V \oplus V'$, we have
     \begin{equation*}
         T(a(v,v') + b(w,w')) = T(av + bw, av' + bw') = A(av + bw) + B(av' + bw').
     \end{equation*}
@@ -91,7 +91,7 @@
     \begin{equation*}
         aAv + bAw + aBv' + bBw' = aT(v,v') + bT(w,w').
     \end{equation*}
-    hence $T$ is linear. We only need to show that $T$ intertwines the representations. Let $x \in G$ and $(v,v') \in V\oplus V'$. Then
+    Hence $T$ is linear. We only need to show that $T$ intertwines the representations. Let $x \in G$ and $(v,v') \in V\oplus V'$. Then
     \begin{equation*}
         T(\pi \oplus \pi')(x)(v,v') = T(\pi(x)v, \pi'(x)v') = A\pi(x)v + B\pi'(x)v'.
     \end{equation*}
@@ -152,7 +152,7 @@
     \end{equation*}
     for all $g \in G$ by the orthogonality of the irreducible spaces $V_\delta$, where $\langle \cdot, \cdot \rangle_\delta$ is the respective induced Hermitian inner product. But $g \mapsto \langle  \delta(g) p_\delta(v_1), p_\delta(v_2) \rangle_\delta$ belongs to $C(G)_\delta$ since it is a matrix coefficient of $\delta$. Therefore, $g \mapsto \langle \pi(g) v_1, v_2 \rangle$ belongs to $\mathcal{R}(G)$.
 
-    \item Let $\phi \in \mathcal{R}(G)$. Then there exists a $\phi_\delta \in C(G)_\delta$ for each $\delta \in \hat{G}$ such that $\phi = \sum_{\delta \in \hat{G}} \phi_\delta$. In turn, for each $\delta \in \hat{G}$, there exist matrix elements $m^\delta_1, \ldots, m^\delta_{n_\delta}$ of $\delta$ such that $\phi_\delta = \sum_{j=1}^{n_\delta} m^\delta_j$. Fix $\delta \in \hat{G}$ and $j \in \{1, \ldots, n_\delta\}$, and suppose that $v, w \in V_\delta$ are such that $m^\delta_j(g) = \langle \delta(g) v, w \rangle$ for all $g \in G$. Then, for all $x, g \in G$, we have $m^\delta_j(gx^{-1}) = \langle \delta(gx^{-1}) v, w \rangle = \langle \delta(g)\delta(x^{-1}) v, w \rangle$. Since $\delta(x^{-1})v \in V_\delta$, the map $g \mapsto m^\delta_j(gx^{-1})$ is a matrix element for all $x \in G$. Similarly, $g \mapsto m^\delta_j(xg)$ is a matrix element for all $x \in G$. It follows that $g \mapsto \phi_\delta(gx^{-1})$ and $g \mapsto \phi_\delta(xg)$ belong to $C(G)_\delta$ for all $x \in G$, and therefore $g \mapsto \phi(gx^{-1})$ and $g \mapsto \phi(xg)$ belong to $\mathcal{R}(G)$ for all $x \in G$.
+    \item Let $\phi \in \mathcal{R}(G)$. Then there exists a $\phi_\delta \in C(G)_\delta$ for each $\delta \in \hat{G}$ such that $\phi = \sum_{\delta \in \hat{G}} \phi_\delta$. In turn, for each $\delta \in \hat{G}$, there exist matrix coefficients $m^\delta_1, \ldots, m^\delta_{n_\delta}$ of $\delta$ such that $\phi_\delta = \sum_{j=1}^{n_\delta} m^\delta_j$. Fix $\delta \in \hat{G}$ and $j \in \{1, \ldots, n_\delta\}$, and suppose that $v, w \in V_\delta$ are such that $m^\delta_j(g) = \langle \delta(g) v, w \rangle_\delta$ for all $g \in G$. Then, for all $x, g \in G$, we have $m^\delta_j(gx^{-1}) = \langle \delta(gx^{-1}) v, w \rangle_\delta = \langle \delta(g)\delta(x^{-1}) v, w \rangle_\delta$. Since $\delta(x^{-1})v \in V_\delta$, the map $g \mapsto m^\delta_j(gx^{-1})$ is a matrix coefficient for all $x \in G$. Similarly, $g \mapsto m^\delta_j(xg)$ is a matrix coefficient for all $x \in G$. It follows that $g \mapsto \phi_\delta(gx^{-1})$ and $g \mapsto \phi_\delta(xg)$ belong to $C(G)_\delta$ for all $x \in G$, and therefore $g \mapsto \phi(gx^{-1})$ and $g \mapsto \phi(xg)$ belong to $\mathcal{R}(G)$ for all $x \in G$.
     
     Now let $f \in \mathcal{R}(G)^\perp$. For any $\phi \in \mathcal{R}(G)$ and $x \in G$, we have
     \begin{equation} \label{eq:Rxf-phi-product}
@@ -168,7 +168,7 @@
     \begin{equation*}
         f(x) = \sum_{j=1}^{n} \langle R_x(f), f_j \rangle f_j(e).
     \end{equation*}
-    But by (ii), $x \mapsto \langle R_x(f), f_j \rangle$ belongs to $\mathcal{R}(G)$ for all $j$. Therefore, $f \in \mathcal{R}(G)$ and thus $f = 0$. This holds for any $f \in \mathcal{R}(G)^\perp$, so $\mathcal{R}(G)^\perp = \{0\}$. It follows that $C(G) = \mathcal{R}(G) \oplus \mathcal{R}(G)^\perp = \mathcal{R}(G)$.
+    But by (ii), $x \mapsto \langle R_x(f), f_j \rangle$ belongs to $\mathcal{R}(G)$ for all $j$. Therefore, $f \in \mathcal{R}(G)$. This holds for any $f \in \mathcal{R}(G)^\perp$, so $\mathcal{R}(G)^\perp \subset \mathcal{R}(G)$. It follows that $C(G) = \mathcal{R}(G) \oplus \mathcal{R}(G)^\perp = \mathcal{R}(G)$.
 \end{enumerate}
 
 \section*{Week 13, exercise 2}
@@ -184,13 +184,13 @@
     \end{align*}
     Therefore, $\phi = \mathrm{id_G}$. Since $D$ is a group homomorphism, this implies that $D$ is injective.
 
-    \item Let $O \subset \mathfrak{g}$ be an open neighbourhood of $0$ such that $\exp : O \to \exp(O)$ is a diffeomorphism. Since $f_n(\exp X) = \exp(T_e f_n (X)) \to \exp(\psi(X))$ by the continuity of $\exp$, for all $X \in O$, the sequence $(f_n)_n$ converges pointwise on $\exp(O)$. Now fix $g \in G$, not necessarily in $\exp(O)$. Then there exist $X_1, \ldots, X_k \in \mathfrak{g}$ such that $g = \exp(X_1) \cdots \exp(X_k)$. For all $j \in \{1, \ldots, k\}$, Let $m_j \in \bb{N}$ be large enough that $X_j/m_j \in O$. Write $Y_j = X_j/m_j$ for all $j$. Then, by Proposition 2.9 (Koelink),
+    \item Let $O \subset \mathfrak{g}$ be an open neighbourhood of $0$ such that $\exp : O \to \exp(O)$ is a diffeomorphism. Since $f_n(\exp X) = \exp(T_e f_n (X)) \to \exp(\psi(X))$ as $n \to \infty$ by the continuity of $\exp$, for all $X \in O$, the sequence $(f_n)_n$ converges pointwise on $\exp(O)$. Now fix $g \in G$, not necessarily in $\exp(O)$. Then there exist $X_1, \ldots, X_k \in \mathfrak{g}$ such that $g = \exp(X_1) \cdots \exp(X_k)$. For all $j \in \{1, \ldots, k\}$, Let $m_j \in \bb{N}$ be large enough that $X_j/m_j \in O$. Write $Y_j = X_j/m_j$ for all $j$. Then, by Proposition 2.9 (Koelink),
     \begin{equation*}
         g = \exp(m_1Y_1) \cdots \exp(m_kY_k) = (\exp Y_1)^{m_1} \cdots (\exp Y_k)^{m_k}.
     \end{equation*}
     Now we see that
     \begin{equation} \label{eq:limit-of-fn}
-        f_n(g) = f_n(\exp Y_1)^{m_1} \cdots f_n(\exp Y_k)^{m_k} \to (\exp \psi(Y_1))^{m_1} \cdots (\exp \psi(Y_k))^{m_k}
+        f_n(g) = f_n(\exp Y_1)^{m_1} \cdots f_n(\exp Y_k)^{m_k} \to (\exp \psi(Y_1))^{m_1} \cdots (\exp \psi(Y_k))^{m_k} \text{ as } n \to \infty
     \end{equation}
     by the homomorphism property of $f$ and the continuity of $\exp$ and the group multiplication. Therefore, there exists a pointwise limit $f$ of $(f_n)_n$.
 
@@ -241,12 +241,12 @@
     \begin{equation*}
         T_e f(X) = \frac{d}{dt}\bigg\vert_{t=0} f(\exp(tX)) = \frac{d}{dt}\bigg\vert_{t=0} \exp(\psi(tX)) = \psi(X).
     \end{equation*}
-    Therefore, $\psi \in D(\Aut(G))$ and hence $D(\Aut(G))$ is closed.
+    Therefore, $\psi \in D(\Aut(G))$ and hence $D(\Aut(G))$ is closed in $\Aut(\mathfrak{g})$.
     \item We will show that $\dim \Aut(S^1) < \dim \Aut(i\bb{R})$, where $i\bb{R}$ is the Lie algebra of $S^1$.
     
-    First, it is clear that the only group homomorphisms of $i\bb{R}$ (which is isomorphic to $\bb{R}$) are of the form $iX \mapsto \lambda iX$ with $\lambda \in \bb{R}$. The automorphisms are then the maps $iX \mapsto \lambda iX$ with $\lambda \in \bb{R} \setminus 0$. Hence, the automorphism group is the one-dimensional Lie group $\bb{R}^\times$.
+    First, it is clear that the only group homomorphisms of $i\bb{R}$ (which is isomorphic to $\bb{R}$) are of the form $iX \mapsto \lambda iX$ with $\lambda \in \bb{R}$. The automorphisms are then the maps $iX \mapsto \lambda iX$ with $\lambda \in \bb{R} \setminus \{0\}$. Hence, the automorphism group is the one-dimensional Lie group $\bb{R}^\times$.
     
-    Next, let $iX \in i\bb{R}$ and $\alpha_{iX} : \bb{R} \to S^1 : t \mapsto e^{itX}$. The latter is clearly a one-parameter subgroup with $\alpha_{iX}(0) = 0$ and $\frac{d}{dt}\big\vert_{t=0} \alpha_{iX}(0) = iX$. Therefore, the map $i\bb{R} \to S^1 : iX \mapsto \alpha_{iX}(1) = e^{iX}$ works as the exponential map. In this case the exponential map is surjective.
+    Next, for $iX \in i\bb{R}$ define $\alpha_{iX} : \bb{R} \to S^1 : t \mapsto e^{itX}$. The latter is clearly a one-parameter subgroup with $\alpha_{iX}(0) = 0$ and $\frac{d}{dt}\big\vert_{t=0} \alpha_{iX}(0) = iX$. Therefore, the map $i\bb{R} \to S^1 : iX \mapsto \alpha_{iX}(1) = e^{iX}$ works as the exponential map. In this case the exponential map is surjective.
 
     Now let $f \in \Aut(S^1)$. Then $f(e^{iX}) = e^{T_ef(iX)}$. We know $T_ef \in \Aut(i\bb{R})$, so we must have $T_ef(iX) = \lambda iX$ for some $\lambda \in \bb{R}^\times$. Then, $f(e^{iX}) = e^{\lambda iX}$. However, since $f$ is a homomorphism, $1 = f(1) = f(e^{i2\pi}) = e^{\lambda i2\pi}$, so $\lambda \in \bb{Z}$. Moreover, $f$ must be injective, so we want
     \begin{equation*}
